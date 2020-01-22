@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AstrofilmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CRITICAS">
+    <Key>
+      <PropertyRef Name="IDCritica" />
+    </Key>
+    <Property Name="IDCritica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Texto" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDUserFK" Type="Int32" Nullable="false" />
+    <Property Name="IDPeliFK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PELICULAS" Relationship="Self.CriticaPeliFK" FromRole="CRITICAS" ToRole="PELICULAS" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.CriticaUserFK" FromRole="CRITICAS" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="FUNCIONES">
+    <Key>
+      <PropertyRef Name="IDFuncion" />
+    </Key>
+    <Property Name="IDFuncion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Disponibles" Type="Int32" />
+    <Property Name="PrecioBruto" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+    <Property Name="IDPeliFK" Type="Int32" Nullable="false" />
+    <Property Name="IDSalaFK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PELICULAS" Relationship="Self.FuncionPeliFK" FromRole="FUNCIONES" ToRole="PELICULAS" />
+    <NavigationProperty Name="SALAS" Relationship="Self.FuncionSalaFK" FromRole="FUNCIONES" ToRole="SALAS" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.ReservaFuncionFK" FromRole="FUNCIONES" ToRole="RESERVA" />
+  </EntityType>
+  <EntityType Name="GENEROS">
+    <Key>
+      <PropertyRef Name="IDGenero" />
+    </Key>
+    <Property Name="IDGenero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FecNac" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PELICULAS" Relationship="Self.PELI_GENERO" FromRole="GENEROS" ToRole="PELICULAS" />
+  </EntityType>
+  <EntityType Name="LISTAS">
+    <Key>
+      <PropertyRef Name="IDLista" />
+    </Key>
+    <Property Name="IDLista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Publica" Type="Boolean" Nullable="false" />
+    <Property Name="NElementos" Type="Int32" />
+    <Property Name="PropietarioFK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="COLABORADORES_LISTAS" Relationship="Self.ListaListaFK" FromRole="LISTAS" ToRole="COLABORADORES_LISTAS" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.ListaPropietarioFK" FromRole="LISTAS" ToRole="USUARIOS" />
+    <NavigationProperty Name="PELICULAS" Relationship="Self.LISTA_PELI" FromRole="LISTAS" ToRole="PELICULAS" />
+  </EntityType>
+  <EntityType Name="PELICULAS">
+    <Key>
+      <PropertyRef Name="IDPelicula" />
+    </Key>
+    <Property Name="IDPelicula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Año" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PuntMedia" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Premium" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CRITICAS" Relationship="Self.CriticaPeliFK" FromRole="PELICULAS" ToRole="CRITICAS" />
+    <NavigationProperty Name="FUNCIONES" Relationship="Self.FuncionPeliFK" FromRole="PELICULAS" ToRole="FUNCIONES" />
+    <NavigationProperty Name="LISTAS" Relationship="Self.LISTA_PELI" FromRole="PELICULAS" ToRole="LISTAS" />
+    <NavigationProperty Name="GENEROS" Relationship="Self.PELI_GENERO" FromRole="PELICULAS" ToRole="GENEROS" />
+    <NavigationProperty Name="TRABAJADORES" Relationship="Self.PELI_TRABAJADOR" FromRole="PELICULAS" ToRole="TRABAJADORES" />
+  </EntityType>
+  <EntityType Name="RESERVA">
+    <Key>
+      <PropertyRef Name="IDReserva" />
+    </Key>
+    <Property Name="IDReserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FecReserva" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NumButaca" Type="Int32" Nullable="false" />
+    <Property Name="IDUserFK" Type="Int32" Nullable="false" />
+    <Property Name="IDFuncionFK" Type="Int32" Nullable="false" />
+    <Property Name="PrecioNeto" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+    <NavigationProperty Name="FUNCIONES" Relationship="Self.ReservaFuncionFK" FromRole="RESERVA" ToRole="FUNCIONES" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.ReservaUserFK" FromRole="RESERVA" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="SALAS">
+    <Key>
+      <PropertyRef Name="IDSala" />
+    </Key>
+    <Property Name="IDSala" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Aforo" Type="Int32" Nullable="false" />
+    <Property Name="Ciudad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="FUNCIONES" Relationship="Self.FuncionSalaFK" FromRole="SALAS" ToRole="FUNCIONES" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TRABAJADORES">
+    <Key>
+      <PropertyRef Name="IDTrabajador" />
+    </Key>
+    <Property Name="IDTrabajador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="Int32" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FecNac" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PELICULAS" Relationship="Self.PELI_TRABAJADOR" FromRole="TRABAJADORES" ToRole="PELICULAS" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="IDUsuario" />
+    </Key>
+    <Property Name="IDUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FecNac" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TipoUser" Type="Boolean" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Premium" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CRITICAS" Relationship="Self.CriticaUserFK" FromRole="USUARIOS" ToRole="CRITICAS" />
+    <NavigationProperty Name="LISTAS" Relationship="Self.ListaPropietarioFK" FromRole="USUARIOS" ToRole="LISTAS" />
+    <NavigationProperty Name="RESERVA" Relationship="Self.ReservaUserFK" FromRole="USUARIOS" ToRole="RESERVA" />
+    <NavigationProperty Name="USUARIOS_AMIGOS" Relationship="Self.AmigoUsuarioFK" FromRole="USUARIOS" ToRole="USUARIOS_AMIGOS" />
+    <NavigationProperty Name="COLABORADORES_LISTAS" Relationship="Self.ColaboUsuarioFK" FromRole="USUARIOS" ToRole="COLABORADORES_LISTAS" />
+    <NavigationProperty Name="USUARIOS_AMIGOS1" Relationship="Self.UsuarioUsuarioFK" FromRole="USUARIOS" ToRole="USUARIOS_AMIGOS" />
+  </EntityType>
+  <EntityType Name="COLABORADORES_LISTAS">
+    <Key>
+      <PropertyRef Name="IDListaFK" />
+    </Key>
+    <Property Name="IDUserFK" Type="Int32" />
+    <Property Name="IDListaFK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LISTAS" Relationship="Self.ListaListaFK" FromRole="COLABORADORES_LISTAS" ToRole="LISTAS" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.ColaboUsuarioFK" FromRole="COLABORADORES_LISTAS" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="USUARIOS_AMIGOS">
+    <Key>
+      <PropertyRef Name="IDAmigoFK" />
+    </Key>
+    <Property Name="IDUserFK" Type="Int32" />
+    <Property Name="IDAmigoFK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.AmigoUsuarioFK" FromRole="USUARIOS_AMIGOS" ToRole="USUARIOS" />
+    <NavigationProperty Name="USUARIOS1" Relationship="Self.UsuarioUsuarioFK" FromRole="USUARIOS_AMIGOS" ToRole="USUARIOS" />
+  </EntityType>
+  <Association Name="CriticaPeliFK">
+    <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="1" />
+    <End Role="CRITICAS" Type="Self.CRITICAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULAS">
+        <PropertyRef Name="IDPelicula" />
+      </Principal>
+      <Dependent Role="CRITICAS">
+        <PropertyRef Name="IDPeliFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CriticaUserFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="CRITICAS" Type="Self.CRITICAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="CRITICAS">
+        <PropertyRef Name="IDUserFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FuncionPeliFK">
+    <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="1" />
+    <End Role="FUNCIONES" Type="Self.FUNCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULAS">
+        <PropertyRef Name="IDPelicula" />
+      </Principal>
+      <Dependent Role="FUNCIONES">
+        <PropertyRef Name="IDPeliFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FuncionSalaFK">
+    <End Role="SALAS" Type="Self.SALAS" Multiplicity="1" />
+    <End Role="FUNCIONES" Type="Self.FUNCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SALAS">
+        <PropertyRef Name="IDSala" />
+      </Principal>
+      <Dependent Role="FUNCIONES">
+        <PropertyRef Name="IDSalaFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReservaFuncionFK">
+    <End Role="FUNCIONES" Type="Self.FUNCIONES" Multiplicity="1" />
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FUNCIONES">
+        <PropertyRef Name="IDFuncion" />
+      </Principal>
+      <Dependent Role="RESERVA">
+        <PropertyRef Name="IDFuncionFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ListaListaFK">
+    <End Role="LISTAS" Type="Self.LISTAS" Multiplicity="1" />
+    <End Role="COLABORADORES_LISTAS" Type="Self.COLABORADORES_LISTAS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="LISTAS">
+        <PropertyRef Name="IDLista" />
+      </Principal>
+      <Dependent Role="COLABORADORES_LISTAS">
+        <PropertyRef Name="IDListaFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ListaPropietarioFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="LISTAS" Type="Self.LISTAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="LISTAS">
+        <PropertyRef Name="PropietarioFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReservaUserFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="RESERVA">
+        <PropertyRef Name="IDUserFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AmigoUsuarioFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="USUARIOS_AMIGOS" Type="Self.USUARIOS_AMIGOS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="USUARIOS_AMIGOS">
+        <PropertyRef Name="IDAmigoFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ColaboUsuarioFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+    <End Role="COLABORADORES_LISTAS" Type="Self.COLABORADORES_LISTAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="COLABORADORES_LISTAS">
+        <PropertyRef Name="IDUserFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsuarioUsuarioFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+    <End Role="USUARIOS_AMIGOS" Type="Self.USUARIOS_AMIGOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="USUARIOS_AMIGOS">
+        <PropertyRef Name="IDUserFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LISTA_PELI">
+    <End Role="LISTAS" Type="Self.LISTAS" Multiplicity="*" />
+    <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="*" />
+  </Association>
+  <Association Name="PELI_GENERO">
+    <End Role="GENEROS" Type="Self.GENEROS" Multiplicity="*" />
+    <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="*" />
+  </Association>
+  <Association Name="PELI_TRABAJADOR">
+    <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="*" />
+    <End Role="TRABAJADORES" Type="Self.TRABAJADORES" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="AstrofilmEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CRITICAS" EntityType="Self.CRITICAS" />
+    <EntitySet Name="FUNCIONES" EntityType="Self.FUNCIONES" />
+    <EntitySet Name="GENEROS" EntityType="Self.GENEROS" />
+    <EntitySet Name="LISTAS" EntityType="Self.LISTAS" />
+    <EntitySet Name="PELICULAS" EntityType="Self.PELICULAS" />
+    <EntitySet Name="RESERVA" EntityType="Self.RESERVA" />
+    <EntitySet Name="SALAS" EntityType="Self.SALAS" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TRABAJADORES" EntityType="Self.TRABAJADORES" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+    <EntitySet Name="COLABORADORES_LISTAS" EntityType="Self.COLABORADORES_LISTAS" />
+    <EntitySet Name="USUARIOS_AMIGOS" EntityType="Self.USUARIOS_AMIGOS" />
+    <AssociationSet Name="CriticaPeliFK" Association="Self.CriticaPeliFK">
+      <End Role="PELICULAS" EntitySet="PELICULAS" />
+      <End Role="CRITICAS" EntitySet="CRITICAS" />
+    </AssociationSet>
+    <AssociationSet Name="CriticaUserFK" Association="Self.CriticaUserFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="CRITICAS" EntitySet="CRITICAS" />
+    </AssociationSet>
+    <AssociationSet Name="FuncionPeliFK" Association="Self.FuncionPeliFK">
+      <End Role="PELICULAS" EntitySet="PELICULAS" />
+      <End Role="FUNCIONES" EntitySet="FUNCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FuncionSalaFK" Association="Self.FuncionSalaFK">
+      <End Role="SALAS" EntitySet="SALAS" />
+      <End Role="FUNCIONES" EntitySet="FUNCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="ReservaFuncionFK" Association="Self.ReservaFuncionFK">
+      <End Role="FUNCIONES" EntitySet="FUNCIONES" />
+      <End Role="RESERVA" EntitySet="RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="ListaListaFK" Association="Self.ListaListaFK">
+      <End Role="LISTAS" EntitySet="LISTAS" />
+      <End Role="COLABORADORES_LISTAS" EntitySet="COLABORADORES_LISTAS" />
+    </AssociationSet>
+    <AssociationSet Name="ListaPropietarioFK" Association="Self.ListaPropietarioFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="LISTAS" EntitySet="LISTAS" />
+    </AssociationSet>
+    <AssociationSet Name="ReservaUserFK" Association="Self.ReservaUserFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="RESERVA" EntitySet="RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="AmigoUsuarioFK" Association="Self.AmigoUsuarioFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="USUARIOS_AMIGOS" EntitySet="USUARIOS_AMIGOS" />
+    </AssociationSet>
+    <AssociationSet Name="ColaboUsuarioFK" Association="Self.ColaboUsuarioFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="COLABORADORES_LISTAS" EntitySet="COLABORADORES_LISTAS" />
+    </AssociationSet>
+    <AssociationSet Name="UsuarioUsuarioFK" Association="Self.UsuarioUsuarioFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="USUARIOS_AMIGOS" EntitySet="USUARIOS_AMIGOS" />
+    </AssociationSet>
+    <AssociationSet Name="LISTA_PELI" Association="Self.LISTA_PELI">
+      <End Role="LISTAS" EntitySet="LISTAS" />
+      <End Role="PELICULAS" EntitySet="PELICULAS" />
+    </AssociationSet>
+    <AssociationSet Name="PELI_GENERO" Association="Self.PELI_GENERO">
+      <End Role="GENEROS" EntitySet="GENEROS" />
+      <End Role="PELICULAS" EntitySet="PELICULAS" />
+    </AssociationSet>
+    <AssociationSet Name="PELI_TRABAJADOR" Association="Self.PELI_TRABAJADOR">
+      <End Role="PELICULAS" EntitySet="PELICULAS" />
+      <End Role="TRABAJADORES" EntitySet="TRABAJADORES" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AstrofilmModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AstrofilmModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

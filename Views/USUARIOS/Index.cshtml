@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Astrofilm.Models.USUARIOS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FecNac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Premium)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIOS_AMIGOS.IDAmigoFK)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FecNac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Premium)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USUARIOS_AMIGOS.IDAmigoFK)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDUsuario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDUsuario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDUsuario })
+        </td>
+    </tr>
+}
+
+</table>
