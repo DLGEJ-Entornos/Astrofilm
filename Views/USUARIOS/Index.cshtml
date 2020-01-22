@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Astrofilm.Models.USUARIOS>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Inicio";
 }
 
-<h2>Index</h2>
+<h2>Usuarios</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -59,9 +59,9 @@
             @Html.DisplayFor(modelItem => item.USUARIOS_AMIGOS.IDAmigoFK)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDUsuario }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDUsuario }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDUsuario })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IDUsuario }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.IDUsuario }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IDUsuario })
         </td>
     </tr>
 }

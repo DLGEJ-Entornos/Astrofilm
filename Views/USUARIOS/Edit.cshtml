@@ -36,7 +36,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FecNac, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FecNac, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.FecNac, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.JQueryUI().DatepickerFor(model => //Datapicker para Fechas
+                model.FecNac).ShowButtonPanel(true).ChangeYear(true).ChangeMonth(true)
                 @Html.ValidationMessageFor(model => model.FecNac, "", new { @class = "text-danger" })
             </div>
         </div>

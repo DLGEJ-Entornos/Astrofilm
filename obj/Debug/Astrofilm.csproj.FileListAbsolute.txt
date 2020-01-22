@@ -115,3 +115,5 @@ E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\obj\Debug\Astrofilm.csproj.Core
 E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\obj\Debug\Astrofilm.csproj.CopyComplete
 E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\obj\Debug\Astrofilm.dll
 E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\obj\Debug\Astrofilm.pdb
+E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\bin\JQueryUIHelpers.dll
+E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\bin\JQueryUIHelpers.xml

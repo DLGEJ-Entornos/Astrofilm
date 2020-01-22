@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="AstrofilmModel.TRABAJADORES" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="AstrofilmModel.USUARIOS" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AstrofilmModel.COLABORADORES_LISTAS" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AstrofilmModel.USUARIOS_AMIGOS" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel.USUARIOS_AMIGOS" Width="2.375" PointX="2.125" PointY="12.125" IsExpanded="true" />
         <AssociationConnector Association="AstrofilmModel.CriticaPeliFK" ManuallyRouted="false" />
         <AssociationConnector Association="AstrofilmModel.CriticaUserFK" ManuallyRouted="false" />
         <AssociationConnector Association="AstrofilmModel.FuncionPeliFK" ManuallyRouted="false" />

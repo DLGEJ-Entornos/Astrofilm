@@ -11,7 +11,8 @@ namespace Astrofilm.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class USUARIOS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,6 +28,7 @@ namespace Astrofilm.Models
         public int IDUsuario { get; set; }
         public string Apellidos { get; set; }
         public string Nombre { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public System.DateTime FecNac { get; set; }
         public bool TipoUser { get; set; }
         public string Email { get; set; }
