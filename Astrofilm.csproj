@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -174,8 +176,65 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Astrofilm.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Astrofilm.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Astrofilm.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Astrofilm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Astrofilm.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COLABORADORES_LISTAS.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CRITICAS.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FUNCIONES.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GENEROS.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LISTAS.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PELICULAS.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RESERVA.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SALAS.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TRABAJADORES.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USUARIOS.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USUARIOS_AMIGOS.cs">
+      <DependentUpon>Astrofilm.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -192,8 +251,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Astrofilm.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Astrofilm.edmx</DependentUpon>
+      <LastGenOutput>Astrofilm.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Astrofilm.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Astrofilm.edmx</DependentUpon>
+      <LastGenOutput>Astrofilm.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Astrofilm.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Astrofilm.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Astrofilm.edmx.diagram">
+      <DependentUpon>Astrofilm.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -240,7 +316,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
