@@ -24,9 +24,39 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Usuario"))
+                        {
+                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                        }
+                        if (User.IsInRole("Administrador"))
+                        {
+                            //DROPDOWN BOOTSRAP con las opciones de administracion
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administracion        
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li> 
+                            //
+                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                            <li>@Html.ActionLink("Usuarios", "Index", "USUARIOS")</li>
+                            //Acceso la administración de todas las tablas
+                        }
+                    }
+                    else //Cualquiera
+                    {
+                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                    }
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

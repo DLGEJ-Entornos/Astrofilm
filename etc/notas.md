@@ -18,7 +18,9 @@ En lugar de tipo de dato DATA => DATATIME
 ## Cualquiera
 
 - Index
-- Reservas 
 - About
+
+
+
  En GENEROS Eliminar o ocultar campos : FecNac y Pais 
  En CRITICAS Añadir fecha de critica BD.
