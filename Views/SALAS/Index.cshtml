@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Astrofilm.Models.SALAS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Aforo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aforo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ciudad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDSala }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDSala }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDSala })
+        </td>
+    </tr>
+}
+
+</table>

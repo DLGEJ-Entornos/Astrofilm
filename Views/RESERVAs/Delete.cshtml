@@ -1,0 +1,64 @@
+﻿@model Astrofilm.Models.RESERVA
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RESERVA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FecReserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FecReserva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumButaca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumButaca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioNeto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioNeto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FUNCIONES.IDFuncion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FUNCIONES.IDFuncion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIOS.Apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIOS.Apellidos)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

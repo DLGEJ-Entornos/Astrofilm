@@ -2,3 +2,21 @@ A la tabla FUNCIONES añadirle el campo agregado plazas disponibles. (calc de ta
 Tabla USUARIOS-AMIGOS en capa de negocio bloquear que mismo user sea amigo de si mismo.
 En lugar de tipo de dato DATA => DATATIME
 
+## Usuarios
+
+- Index
+- Reservas 
+- About
+- Listas
+- Amigos
+- Carrito
+   
+## Administrador
+
+- TODO
+
+## Cualquiera
+
+- Index
+- Reservas 
+- About

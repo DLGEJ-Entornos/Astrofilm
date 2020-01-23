@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Astrofilm.Models.CRITICAS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Texto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PELICULAS.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIOS.Apellidos)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Texto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PELICULAS.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDCritica }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDCritica }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDCritica })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Astrofilm.Models.LISTAS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NElementos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COLABORADORES_LISTAS.IDListaFK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIOS.Apellidos)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NElementos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COLABORADORES_LISTAS.IDListaFK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDLista }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDLista }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDLista })
+        </td>
+    </tr>
+}
+
+</table>

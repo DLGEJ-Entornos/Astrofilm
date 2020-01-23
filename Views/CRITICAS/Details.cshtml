@@ -1,0 +1,42 @@
+﻿@model Astrofilm.Models.CRITICAS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CRITICAS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Texto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Texto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PELICULAS.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PELICULAS.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIOS.Apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIOS.Apellidos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDCritica }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

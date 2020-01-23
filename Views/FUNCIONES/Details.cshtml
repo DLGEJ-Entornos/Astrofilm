@@ -1,0 +1,58 @@
+﻿@model Astrofilm.Models.FUNCIONES
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FUNCIONES</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponibles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponibles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioBruto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioBruto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PELICULAS.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PELICULAS.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SALAS.Ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SALAS.Ciudad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDFuncion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
