@@ -18,7 +18,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.JQueryUI().DatepickerFor(model => //Datapicker para Fechas
+                model.Fecha).ShowButtonPanel(true).ChangeYear(true).ChangeMonth(true)
                 @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
             </div>
         </div>
