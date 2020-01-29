@@ -179,6 +179,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LISTASController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MisDatosController.cs" />
     <Compile Include="Controllers\PELICULASController.cs" />
     <Compile Include="Controllers\RESERVAsController.cs" />
     <Compile Include="Controllers\SALASController.cs" />
@@ -426,6 +427,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\MisDatos\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
