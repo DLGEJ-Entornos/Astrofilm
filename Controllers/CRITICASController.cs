@@ -15,6 +15,7 @@ namespace Astrofilm.Controllers
         private AstrofilmEntities db = new AstrofilmEntities();
 
         // GET: CRITICAS
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var cRITICAS = db.CRITICAS.Include(c => c.PELICULAS).Include(c => c.USUARIOS);
@@ -22,6 +23,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: CRITICAS/Details/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: CRITICAS/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             ViewBag.IDPeliFK = new SelectList(db.PELICULAS, "IDPelicula", "Titulo");
@@ -64,6 +67,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: CRITICAS/Edit/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -99,6 +103,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: CRITICAS/Delete/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
