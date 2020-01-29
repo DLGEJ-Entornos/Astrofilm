@@ -12,7 +12,6 @@ namespace Astrofilm.Controllers
     {
         public ActionResult Index()
         {
-            //DefaultConnection db = new DefaultConnection();
             AstrofilmEntities db = new AstrofilmEntities();
 
             // Si existe el empleado correspondiente al usuario actual
@@ -24,7 +23,8 @@ namespace Astrofilm.Controllers
             empleado == null)
             {
                 return RedirectToAction("Create", "MisDatos");
-            }
+            }
+
             return View();
         }
 

@@ -26,7 +26,8 @@ namespace Astrofilm.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include =
- "Id,Nombre,Email,Telefono,FechaNacimiento")] USUARIOS usuario)
+            //CAMBIA EN EL CONTROLADOR LOS DATOS , 
+         "Id,Nombre,Email,Telefono,FechaNacimiento")] USUARIOS usuario)
         {
             // Para asignar el Nombre del usuario identificado al campo Email de Empleado
             usuario.Email = User.Identity.GetUserName();
