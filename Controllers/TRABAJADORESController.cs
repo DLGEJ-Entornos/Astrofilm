@@ -15,12 +15,14 @@ namespace Astrofilm.Controllers
         private AstrofilmEntities db = new AstrofilmEntities();
 
         // GET: TRABAJADORES
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             return View(db.TRABAJADORES.ToList());
         }
 
         // GET: TRABAJADORES/Details/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: TRABAJADORES/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +62,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: TRABAJADORES/Edit/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +94,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: TRABAJADORES/Delete/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

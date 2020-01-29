@@ -15,6 +15,7 @@ namespace Astrofilm.Controllers
         private AstrofilmEntities db = new AstrofilmEntities();
 
         // GET: RESERVAs
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var rESERVA = db.RESERVA.Include(r => r.FUNCIONES).Include(r => r.USUARIOS);
@@ -22,6 +23,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Details/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             ViewBag.IDFuncionFK = new SelectList(db.FUNCIONES, "IDFuncion", "IDFuncion");
@@ -64,6 +67,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Edit/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -99,6 +103,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Delete/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
