@@ -412,6 +412,7 @@
     <Content Include="Views\SALAS\Edit.cshtml" />
     <Content Include="Views\SALAS\Index.cshtml" />
     <Content Include="Views\MisDatos\Create.cshtml" />
+    <Content Include="Views\MisDatos\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
