@@ -60,7 +60,7 @@ namespace Astrofilm.Controllers
         [ValidateAntiForgeryToken]
         //"Id,Nombre,Apellidos,FecNac,TipoUser"
         public ActionResult Edit([Bind(Include =
-         "Id,Nombre,Email,Apellidos,TipoUser,Premium,FecNac")] USUARIOS usuario)
+         "IDUsuario,Nombre,Email,Apellidos,TipoUser,Premium,FecNac")] USUARIOS usuario)
         {
             usuario.Email = User.Identity.GetUserName();
             if (ModelState.IsValid)
