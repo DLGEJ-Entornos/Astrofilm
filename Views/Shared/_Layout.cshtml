@@ -29,6 +29,7 @@
                         if (User.IsInRole("Usuario"))
                         {
                             <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Mis Datos", "Edit", "MisDatos")</li>
                         }
                         if (User.IsInRole("Administrador")) //admin@empresa.com  admin123
                         {
@@ -54,12 +55,14 @@
                             //
                             <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                             <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                         }
                     }
                     else //Cualquiera
                     {
                         <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                         <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                     }
 
                 </ul>
