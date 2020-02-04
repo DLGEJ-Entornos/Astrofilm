@@ -21,6 +21,12 @@ namespace Astrofilm.Controllers
             return View(db.PELICULAS.ToList());
         }
 
+        // GET: PELICULAS
+        public ActionResult ArchivosPelis()
+        {
+            return View(db.PELICULAS.ToList());
+        }
+
         // GET: PELICULAS/Details/5
         [Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
