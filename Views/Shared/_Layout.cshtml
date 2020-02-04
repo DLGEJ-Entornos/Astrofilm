@@ -30,6 +30,7 @@
                         {
                             <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                             <li>@Html.ActionLink("Mis Datos", "Edit", "MisDatos")</li>
+                            <li>@Html.ActionLink("Archivo", "ArchivoPelis", "PELICULAS")</li>
                         }
                         if (User.IsInRole("Administrador")) //admin@empresa.com  admin123
                         {
@@ -56,6 +57,7 @@
                             <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                             <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                             <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Archivo", "ArchivoPelis", "PELICULAS")</li>
                         }
                     }
                     else //Cualquiera
@@ -63,6 +65,7 @@
                         <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                         <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                         <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Archivo", "ArchivoPelis", "PELICULAS")</li>
                     }
 
                 </ul>

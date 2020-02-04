@@ -21,8 +21,8 @@ namespace Astrofilm.Controllers
             return View(db.PELICULAS.ToList());
         }
 
-        // GET: PELICULAS
-        public ActionResult ArchivosPelis()
+        // GET: VISTA DEL ARCHIVO DE PELICULAS
+        public ActionResult ArchivoPelis()
         {
             return View(db.PELICULAS.ToList());
         }
