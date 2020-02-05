@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="astrofilmModelArchivo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GENEROS">
+          <Key>
+            <PropertyRef Name="IDGenero" />
+          </Key>
+          <Property Name="IDGenero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FecNac" Type="date" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF.dbo.LISTA_PELI' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="LISTA_PELI">
+          <Key>
+            <PropertyRef Name="IDListaFK" />
+            <PropertyRef Name="IDPeliFK" />
+          </Key>
+          <Property Name="IDListaFK" Type="int" Nullable="false" />
+          <Property Name="IDPeliFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LISTAS">
+          <Key>
+            <PropertyRef Name="IDLista" />
+          </Key>
+          <Property Name="IDLista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Publica" Type="bit" Nullable="false" />
+          <Property Name="NElementos" Type="int" />
+          <Property Name="PropietarioFK" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF.dbo.PELI_GENERO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PELI_GENERO">
+          <Key>
+            <PropertyRef Name="IDPeliFK" />
+            <PropertyRef Name="IDGeneroFK" />
+          </Key>
+          <Property Name="IDPeliFK" Type="int" Nullable="false" />
+          <Property Name="IDGeneroFK" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF.dbo.PELI_TRABAJADOR' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PELI_TRABAJADOR">
+          <Key>
+            <PropertyRef Name="IDPeliFK" />
+            <PropertyRef Name="IDTrabajadorFK" />
+          </Key>
+          <Property Name="IDPeliFK" Type="int" Nullable="false" />
+          <Property Name="IDTrabajadorFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PELICULAS">
+          <Key>
+            <PropertyRef Name="IDPelicula" />
+          </Key>
+          <Property Name="IDPelicula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Año" Type="date" Nullable="false" />
+          <Property Name="PuntMedia" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Premium" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRABAJADORES">
+          <Key>
+            <PropertyRef Name="IDTrabajador" />
+          </Key>
+          <Property Name="IDTrabajador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="int" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="FecNac" Type="date" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="ListaPeli_ListaFK">
+          <End Role="LISTAS" Type="Self.LISTAS" Multiplicity="1" />
+          <End Role="LISTA_PELI" Type="Self.LISTA_PELI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LISTAS">
+              <PropertyRef Name="IDLista" />
+            </Principal>
+            <Dependent Role="LISTA_PELI">
+              <PropertyRef Name="IDListaFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ListaPeli_PeliFK">
+          <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="1" />
+          <End Role="LISTA_PELI" Type="Self.LISTA_PELI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PELICULAS">
+              <PropertyRef Name="IDPelicula" />
+            </Principal>
+            <Dependent Role="LISTA_PELI">
+              <PropertyRef Name="IDPeliFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PeliGenero_GeneroFK">
+          <End Role="GENEROS" Type="Self.GENEROS" Multiplicity="1" />
+          <End Role="PELI_GENERO" Type="Self.PELI_GENERO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GENEROS">
+              <PropertyRef Name="IDGenero" />
+            </Principal>
+            <Dependent Role="PELI_GENERO">
+              <PropertyRef Name="IDGeneroFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PeliGenero_PeliFK">
+          <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="1" />
+          <End Role="PELI_GENERO" Type="Self.PELI_GENERO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PELICULAS">
+              <PropertyRef Name="IDPelicula" />
+            </Principal>
+            <Dependent Role="PELI_GENERO">
+              <PropertyRef Name="IDPeliFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PeliPeliFK">
+          <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="1" />
+          <End Role="PELI_TRABAJADOR" Type="Self.PELI_TRABAJADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PELICULAS">
+              <PropertyRef Name="IDPelicula" />
+            </Principal>
+            <Dependent Role="PELI_TRABAJADOR">
+              <PropertyRef Name="IDPeliFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TrabajadorTrabajadorFK">
+          <End Role="TRABAJADORES" Type="Self.TRABAJADORES" Multiplicity="1" />
+          <End Role="PELI_TRABAJADOR" Type="Self.PELI_TRABAJADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRABAJADORES">
+              <PropertyRef Name="IDTrabajador" />
+            </Principal>
+            <Dependent Role="PELI_TRABAJADOR">
+              <PropertyRef Name="IDTrabajadorFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="astrofilmModelArchivoStoreContainer">
+          <EntitySet Name="GENEROS" EntityType="Self.GENEROS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LISTAS" EntityType="Self.LISTAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PELICULAS" EntityType="Self.PELICULAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRABAJADORES" EntityType="Self.TRABAJADORES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LISTA_PELI" EntityType="Self.LISTA_PELI" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LISTA_PELI].[IDListaFK] AS [IDListaFK], 
+    [LISTA_PELI].[IDPeliFK] AS [IDPeliFK]
+    FROM [dbo].[LISTA_PELI] AS [LISTA_PELI]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PELI_GENERO" EntityType="Self.PELI_GENERO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PELI_GENERO].[IDPeliFK] AS [IDPeliFK], 
+    [PELI_GENERO].[IDGeneroFK] AS [IDGeneroFK]
+    FROM [dbo].[PELI_GENERO] AS [PELI_GENERO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PELI_TRABAJADOR" EntityType="Self.PELI_TRABAJADOR" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PELI_TRABAJADOR].[IDPeliFK] AS [IDPeliFK], 
+    [PELI_TRABAJADOR].[IDTrabajadorFK] AS [IDTrabajadorFK]
+    FROM [dbo].[PELI_TRABAJADOR] AS [PELI_TRABAJADOR]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="ListaPeli_ListaFK" Association="Self.ListaPeli_ListaFK">
+            <End Role="LISTAS" EntitySet="LISTAS" />
+            <End Role="LISTA_PELI" EntitySet="LISTA_PELI" />
+          </AssociationSet>
+          <AssociationSet Name="ListaPeli_PeliFK" Association="Self.ListaPeli_PeliFK">
+            <End Role="PELICULAS" EntitySet="PELICULAS" />
+            <End Role="LISTA_PELI" EntitySet="LISTA_PELI" />
+          </AssociationSet>
+          <AssociationSet Name="PeliGenero_GeneroFK" Association="Self.PeliGenero_GeneroFK">
+            <End Role="GENEROS" EntitySet="GENEROS" />
+            <End Role="PELI_GENERO" EntitySet="PELI_GENERO" />
+          </AssociationSet>
+          <AssociationSet Name="PeliGenero_PeliFK" Association="Self.PeliGenero_PeliFK">
+            <End Role="PELICULAS" EntitySet="PELICULAS" />
+            <End Role="PELI_GENERO" EntitySet="PELI_GENERO" />
+          </AssociationSet>
+          <AssociationSet Name="PeliPeliFK" Association="Self.PeliPeliFK">
+            <End Role="PELICULAS" EntitySet="PELICULAS" />
+            <End Role="PELI_TRABAJADOR" EntitySet="PELI_TRABAJADOR" />
+          </AssociationSet>
+          <AssociationSet Name="TrabajadorTrabajadorFK" Association="Self.TrabajadorTrabajadorFK">
+            <End Role="TRABAJADORES" EntitySet="TRABAJADORES" />
+            <End Role="PELI_TRABAJADOR" EntitySet="PELI_TRABAJADOR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="astrofilmModelArchivo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GENEROS">
+          <Key>
+            <PropertyRef Name="IDGenero" />
+          </Key>
+          <Property Name="IDGenero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FecNac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PELICULAS" Relationship="Self.PELI_GENERO" FromRole="GENEROS" ToRole="PELICULAS" />
+        </EntityType>
+        <EntityType Name="LISTAS">
+          <Key>
+            <PropertyRef Name="IDLista" />
+          </Key>
+          <Property Name="IDLista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Publica" Type="Boolean" Nullable="false" />
+          <Property Name="NElementos" Type="Int32" />
+          <Property Name="PropietarioFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PELICULAS" Relationship="Self.LISTA_PELI" FromRole="LISTAS" ToRole="PELICULAS" />
+        </EntityType>
+        <EntityType Name="PELICULAS">
+          <Key>
+            <PropertyRef Name="IDPelicula" />
+          </Key>
+          <Property Name="IDPelicula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Año" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PuntMedia" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Premium" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LISTAS" Relationship="Self.LISTA_PELI" FromRole="PELICULAS" ToRole="LISTAS" />
+          <NavigationProperty Name="GENEROS" Relationship="Self.PELI_GENERO" FromRole="PELICULAS" ToRole="GENEROS" />
+          <NavigationProperty Name="TRABAJADORES" Relationship="Self.PELI_TRABAJADOR" FromRole="PELICULAS" ToRole="TRABAJADORES" />
+        </EntityType>
+        <EntityType Name="TRABAJADORES">
+          <Key>
+            <PropertyRef Name="IDTrabajador" />
+          </Key>
+          <Property Name="IDTrabajador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="Int32" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FecNac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PELICULAS" Relationship="Self.PELI_TRABAJADOR" FromRole="TRABAJADORES" ToRole="PELICULAS" />
+        </EntityType>
+        <Association Name="LISTA_PELI">
+          <End Role="LISTAS" Type="Self.LISTAS" Multiplicity="*" />
+          <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="*" />
+        </Association>
+        <Association Name="PELI_GENERO">
+          <End Role="GENEROS" Type="Self.GENEROS" Multiplicity="*" />
+          <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="*" />
+        </Association>
+        <Association Name="PELI_TRABAJADOR">
+          <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="*" />
+          <End Role="TRABAJADORES" Type="Self.TRABAJADORES" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AstrofilmEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GENEROS" EntityType="Self.GENEROS" />
+          <EntitySet Name="LISTAS" EntityType="Self.LISTAS" />
+          <EntitySet Name="PELICULAS" EntityType="Self.PELICULAS" />
+          <EntitySet Name="TRABAJADORES" EntityType="Self.TRABAJADORES" />
+          <AssociationSet Name="LISTA_PELI" Association="Self.LISTA_PELI">
+            <End Role="LISTAS" EntitySet="LISTAS" />
+            <End Role="PELICULAS" EntitySet="PELICULAS" />
+          </AssociationSet>
+          <AssociationSet Name="PELI_GENERO" Association="Self.PELI_GENERO">
+            <End Role="GENEROS" EntitySet="GENEROS" />
+            <End Role="PELICULAS" EntitySet="PELICULAS" />
+          </AssociationSet>
+          <AssociationSet Name="PELI_TRABAJADOR" Association="Self.PELI_TRABAJADOR">
+            <End Role="PELICULAS" EntitySet="PELICULAS" />
+            <End Role="TRABAJADORES" EntitySet="TRABAJADORES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="astrofilmModelArchivoStoreContainer" CdmEntityContainer="AstrofilmEntities1">
+          <EntitySetMapping Name="GENEROS">
+            <EntityTypeMapping TypeName="astrofilmModelArchivo.GENEROS">
+              <MappingFragment StoreEntitySet="GENEROS">
+                <ScalarProperty Name="IDGenero" ColumnName="IDGenero" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FecNac" ColumnName="FecNac" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LISTAS">
+            <EntityTypeMapping TypeName="astrofilmModelArchivo.LISTAS">
+              <MappingFragment StoreEntitySet="LISTAS">
+                <ScalarProperty Name="IDLista" ColumnName="IDLista" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Publica" ColumnName="Publica" />
+                <ScalarProperty Name="NElementos" ColumnName="NElementos" />
+                <ScalarProperty Name="PropietarioFK" ColumnName="PropietarioFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PELICULAS">
+            <EntityTypeMapping TypeName="astrofilmModelArchivo.PELICULAS">
+              <MappingFragment StoreEntitySet="PELICULAS">
+                <ScalarProperty Name="IDPelicula" ColumnName="IDPelicula" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="PuntMedia" ColumnName="PuntMedia" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Premium" ColumnName="Premium" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRABAJADORES">
+            <EntityTypeMapping TypeName="astrofilmModelArchivo.TRABAJADORES">
+              <MappingFragment StoreEntitySet="TRABAJADORES">
+                <ScalarProperty Name="IDTrabajador" ColumnName="IDTrabajador" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FecNac" ColumnName="FecNac" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="LISTA_PELI" TypeName="astrofilmModelArchivo.LISTA_PELI" StoreEntitySet="LISTA_PELI">
+            <EndProperty Name="LISTAS">
+              <ScalarProperty Name="IDLista" ColumnName="IDListaFK" />
+            </EndProperty>
+            <EndProperty Name="PELICULAS">
+              <ScalarProperty Name="IDPelicula" ColumnName="IDPeliFK" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PELI_GENERO" TypeName="astrofilmModelArchivo.PELI_GENERO" StoreEntitySet="PELI_GENERO">
+            <EndProperty Name="GENEROS">
+              <ScalarProperty Name="IDGenero" ColumnName="IDGeneroFK" />
+            </EndProperty>
+            <EndProperty Name="PELICULAS">
+              <ScalarProperty Name="IDPelicula" ColumnName="IDPeliFK" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PELI_TRABAJADOR" TypeName="astrofilmModelArchivo.PELI_TRABAJADOR" StoreEntitySet="PELI_TRABAJADOR">
+            <EndProperty Name="PELICULAS">
+              <ScalarProperty Name="IDPelicula" ColumnName="IDPeliFK" />
+            </EndProperty>
+            <EndProperty Name="TRABAJADORES">
+              <ScalarProperty Name="IDTrabajador" ColumnName="IDTrabajadorFK" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

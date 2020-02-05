@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Archivo.Models.GENEROS>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index ARCHIVO</h2>
+
+<ul class="nav nav-pills">
+    <li class="nav-item ">
+        <a class="nav-link active rounded-0" data-toggle="pill" href="#home">Peliculas</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link rounded-0" data-toggle="pill" href="#menu1">Trabajadores</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link rounded-0" data-toggle="pill" href="#menu2">Géneros</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link rounded-0" data-toggle="pill" href="#menu3">Listas</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane container active p-0" id="home">
+        <h5 class="text-uppercase p-2 text-center">Lista de Peliculas</h5>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark text-white">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => Model.PELICULAS.FirstOrDefault().Titulo)</th>
+                    <th>@Html.DisplayNameFor(m => Model.PELICULAS.FirstOrDefault().Año)</th>
+                    <th>@Html.DisplayNameFor(m => Model.PELICULAS.FirstOrDefault().PuntMedia)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var pelicula in Model.PELICULAS)
+                {
+                    <tr>
+                        <td>@pelicula.Titulo</td>
+                        <td>@pelicula.Año</td>
+                        <td>@pelicula.PuntMedia</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane container fade p-0" id="menu1">
+        <h5 class="text-uppercase p-2 text-center">Lista de Trabajadores</h5>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark text-white">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => Model.TRABAJADORES.FirstOrDefault().IdTrabajador)</th>
+                    <th>@Html.DisplayNameFor(m => Model.TRABAJADORES.FirstOrDefault().Tipo)</th>
+                    <th>@Html.DisplayNameFor(m => Model.TRABAJADORES.FirstOrDefault().Apellido)</th>
+                    <th>@Html.DisplayNameFor(m => Model.TRABAJADORES.FirstOrDefault().Nombre)</th>
+                    <th>@Html.DisplayNameFor(m => Model.TRABAJADORES.FirstOrDefault().FecNac)</th>
+                    <th>@Html.DisplayNameFor(m => Model.TRABAJADORES.FirstOrDefault().Pais)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var trabajador in Model.TRABAJADORES)
+                {
+                    <tr>
+                        <td>@trabajador.IdTrabajador</td>
+                        <td>@trabajador.Tipo</td>
+                        <td>@trabajador.Apellido</td>
+                        <td>@trabajador.Nombre</td>
+                        <td>@trabajador.FecNac</td>
+                        <td>@trabajador.Pais</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane container fade p-0" id="menu2">
+        <h5 class="text-uppercase p-2 text-center">Lista de Géneros</h5>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark text-white">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => Model.GENEROS.FirstOrDefault().IDGenero)</th>
+                    <th>@Html.DisplayNameFor(m => Model.GENEROS.FirstOrDefault().Nombre)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model.GENEROS)
+                {
+                    <tr>
+                        <td>@employee.IdGenero</td>
+                        <td>@employee.Nombre</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane container fade p-0" id="menu3">
+        <h5 class="text-uppercase p-2 text-center">Lista de Listas</h5>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark text-white">
+                <tr>
+                    <th>@Html.DisplayNameFor(m => Model.LISTAS.FirstOrDefault().IDLista)</th>
+                    <th>@Html.DisplayNameFor(m => Model.LISTAS.FirstOrDefault().Titulo)</th>
+                    <th>@Html.DisplayNameFor(m => Model.LISTAS.FirstOrDefault().Publica)</th>
+                    <th>@Html.DisplayNameFor(m => Model.LISTAS.FirstOrDefault().NElementos)</th>
+                    <th>@Html.DisplayNameFor(m => Model.LISTAS.FirstOrDefault().PropietarioFK)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model.LISTAS)
+                {
+                    <tr>
+                        <td>@employee.IDLista</td>
+                        <td>@employee.Titulo</td>
+                        <td>@employee.Publica</td>
+                        <td>@employee.NElementos</td>
+                        <td>@employee.PropietarioFK</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -17,8 +17,6 @@ namespace Astrofilm.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PELICULAS()
         {
-            this.CRITICAS = new HashSet<CRITICAS>();
-            this.FUNCIONES = new HashSet<FUNCIONES>();
             this.LISTAS = new HashSet<LISTAS>();
             this.GENEROS = new HashSet<GENEROS>();
             this.TRABAJADORES = new HashSet<TRABAJADORES>();
@@ -31,10 +29,6 @@ namespace Astrofilm.Models
         public string Email { get; set; }
         public bool Premium { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CRITICAS> CRITICAS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FUNCIONES> FUNCIONES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LISTAS> LISTAS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -26,8 +26,6 @@ namespace Astrofilm.Models
         public Nullable<int> NElementos { get; set; }
         public int PropietarioFK { get; set; }
     
-        public virtual COLABORADORES_LISTAS COLABORADORES_LISTAS { get; set; }
-        public virtual USUARIOS USUARIOS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PELICULAS> PELICULAS { get; set; }
     }
