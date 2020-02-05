@@ -1,57 +1,21 @@
 ﻿@model IEnumerable<Astrofilm.Models.PELICULAS>
+@Styles.Render("~/Content/Propios/archivosPelis.css")
 
 @{
     ViewBag.Title = "ArchivoPelis";
 }
+    <br /><br />
+<h2>Archivo  de Películas</h2>
 
-<h2>ArchivoPelis</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Año)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PuntMedia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Premium)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Año)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PuntMedia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Premium)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDPelicula }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDPelicula }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDPelicula })
-        </td>
-    </tr>
-}
-
-</table>
+<div id="sliderCards" class="border border-primary">
+    <div class="card table-bordered border border-primary" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">
+                @Html.DisplayNameFor(model => model.Titulo)
+            </h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
