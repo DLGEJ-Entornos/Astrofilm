@@ -1,0 +1,91 @@
+﻿@model Astrofilm.Models.ArchivoModels
+
+@{
+    ViewBag.Title = "ARCHIVO DE PELIS"; }
+
+<h2>ARCHIVO</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Peliculas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trabajadores)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Generos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Listas)
+        </th>
+    </tr>
+
+@foreach (var item in Model.Peliculas) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Año)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PuntMedia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Premium)
+        </td>
+    </tr>
+}
+    </table>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Peliculas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trabajadores)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Generos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Listas)
+        </th>
+    </tr>
+    </table>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Peliculas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trabajadores)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Generos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Listas)
+        </th>
+    </tr>
+    </table>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Peliculas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trabajadores)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Generos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Listas)
+        </th>
+    </tr>
+    </table>

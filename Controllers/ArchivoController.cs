@@ -17,15 +17,10 @@ namespace Astrofilm.Controllers
             //var uSUARIOS = db.USUARIOS.Include(u => u.USUARIOS_AMIGOS);
             var ArchivoTablas = new ArchivoModels
             {
-                IDPelicula = db.IDPelicula.toList(),
-                Titulo = db.Titulo.toList(),
-                IDTrabajador = db.IDTrabajador.toList(),
-                Tipo = db.Tipo.toList(),
-                IDGenero = db.IDGenero.toList(),
-                Nombre = db.Nombre.toList(),
-                IDLista = db.IDLista.toList(),
-                Titutlo = db.Titutlo.toList()
-
+                Peliculas =db.PELICULAS.ToList(),
+                Trabajadores = db.TRABAJADORES.ToList(),
+                Generos = db.GENEROS.ToList(),
+                Listas = db.LISTAS.ToList(),
             };
             return View(ArchivoTablas);
         }

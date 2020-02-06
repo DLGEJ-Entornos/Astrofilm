@@ -8,16 +8,9 @@ namespace Astrofilm.Models
     public class ArchivoModels
     {
         //PELICULAS
-        public int IDPelicula { get; set; }
-        public int Titulo { get; set; }
-        //TRABAJADORES
-        public int IDTrabajador { get; set; } 
-        public int Tipo { get; set; }
-        //GENEROS
-        public int IDGenero{ get; set; } 
-        public int Nombre { get; set; }
-        //LISTAS
-        public int IDLista { get; set; } 
-        public int Titutlo { get; set; }
+        public IEnumerable<PELICULAS>Peliculas { get; set; }
+        public IEnumerable<TRABAJADORES> Trabajadores { get; set; }
+        public IEnumerable<GENEROS> Generos { get; set; }
+        public IEnumerable<LISTAS> Listas { get; set; }
     }
 }
