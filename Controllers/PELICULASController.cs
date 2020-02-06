@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -53,17 +54,21 @@ namespace Astrofilm.Controllers
         // POST: PELICULAS/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Email,Premium")] PELICULAS pELICULAS)
+        public ActionResult Create([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Imagen")] PELICULAS pELICULAS, HttpPostedFileBase Imagen)
         {
             if (ModelState.IsValid)
             {
                 db.PELICULAS.Add(pELICULAS);
                 db.SaveChanges();
+                pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
+                db.Entry(pELICULAS).State = EntityState.Modified;
+                db.SaveChanges();
+                Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
                 return RedirectToAction("Index");
             }
-
             return View(pELICULAS);
         }
 
