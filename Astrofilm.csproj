@@ -234,12 +234,6 @@
     <Compile Include="Models\SALAS.cs">
       <DependentUpon>Astrofilm.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Astrofilm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Astrofilm.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Astrofilm.tt</DependentUpon>
     </Compile>
@@ -314,13 +308,6 @@
       <DependentUpon>Astrofilm.edmx</DependentUpon>
       <LastGenOutput>Astrofilm.cs</LastGenOutput>
     </Content>
-    <EntityDeploy Include="Models\Astrofilm.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Astrofilm.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Astrofilm.edmx.diagram">
-      <DependentUpon>Astrofilm.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -344,6 +331,13 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="Models\Astrofilm.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Astrofilm.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Astrofilm.edmx.diagram">
+      <DependentUpon>Astrofilm.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

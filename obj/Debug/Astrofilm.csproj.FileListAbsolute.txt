@@ -110,7 +110,6 @@ E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\bin\es\EntityFramework.SqlServe
 E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
 E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
 E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\obj\Debug\Astrofilm.csprojAssemblyReference.cache
 E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\obj\Debug\Astrofilm.csproj.CopyComplete
 E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\obj\Debug\Astrofilm.dll
 E:\SERVIDOR\SupuestoPracticoIntegrador\Astrofilm\obj\Debug\Astrofilm.pdb

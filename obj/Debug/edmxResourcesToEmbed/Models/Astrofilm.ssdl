@@ -35,8 +35,6 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
     </Key>
     <Property Name="IDGenero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="FecNac" Type="date" Nullable="false" />
-    <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF.dbo.LISTA_PELI' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -86,8 +84,7 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
     <Property Name="Titulo" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Año" Type="date" Nullable="false" />
     <Property Name="PuntMedia" Type="decimal" Precision="2" Scale="1" Nullable="false" />
-    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Premium" Type="bit" Nullable="false" />
+    <Property Name="Imagen" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="RESERVA">
     <Key>
@@ -354,37 +351,6 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="AstrofilmModelStoreContainer">
     <EntitySet Name="CRITICAS" EntityType="Self.CRITICAS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FUNCIONES" EntityType="Self.FUNCIONES" Schema="dbo" store:Type="Tables" />

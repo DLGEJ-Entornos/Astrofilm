@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AstrofilmModelStoreContainer" CdmEntityContainer="AstrofilmEntities">
+    <EntitySetMapping Name="CRITICAS">
+      <EntityTypeMapping TypeName="AstrofilmModel.CRITICAS">
+        <MappingFragment StoreEntitySet="CRITICAS">
+          <ScalarProperty Name="IDCritica" ColumnName="IDCritica" />
+          <ScalarProperty Name="Texto" ColumnName="Texto" />
+          <ScalarProperty Name="IDUserFK" ColumnName="IDUserFK" />
+          <ScalarProperty Name="IDPeliFK" ColumnName="IDPeliFK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FUNCIONES">
+      <EntityTypeMapping TypeName="AstrofilmModel.FUNCIONES">
+        <MappingFragment StoreEntitySet="FUNCIONES">
+          <ScalarProperty Name="IDFuncion" ColumnName="IDFuncion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Disponibles" ColumnName="Disponibles" />
+          <ScalarProperty Name="PrecioBruto" ColumnName="PrecioBruto" />
+          <ScalarProperty Name="IDPeliFK" ColumnName="IDPeliFK" />
+          <ScalarProperty Name="IDSalaFK" ColumnName="IDSalaFK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GENEROS">
+      <EntityTypeMapping TypeName="AstrofilmModel.GENEROS">
+        <MappingFragment StoreEntitySet="GENEROS">
+          <ScalarProperty Name="IDGenero" ColumnName="IDGenero" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LISTAS">
+      <EntityTypeMapping TypeName="AstrofilmModel.LISTAS">
+        <MappingFragment StoreEntitySet="LISTAS">
+          <ScalarProperty Name="IDLista" ColumnName="IDLista" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Publica" ColumnName="Publica" />
+          <ScalarProperty Name="NElementos" ColumnName="NElementos" />
+          <ScalarProperty Name="PropietarioFK" ColumnName="PropietarioFK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PELICULAS">
+      <EntityTypeMapping TypeName="AstrofilmModel.PELICULAS">
+        <MappingFragment StoreEntitySet="PELICULAS">
+          <ScalarProperty Name="IDPelicula" ColumnName="IDPelicula" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+          <ScalarProperty Name="PuntMedia" ColumnName="PuntMedia" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESERVA">
+      <EntityTypeMapping TypeName="AstrofilmModel.RESERVA">
+        <MappingFragment StoreEntitySet="RESERVA">
+          <ScalarProperty Name="IDReserva" ColumnName="IDReserva" />
+          <ScalarProperty Name="FecReserva" ColumnName="FecReserva" />
+          <ScalarProperty Name="NumButaca" ColumnName="NumButaca" />
+          <ScalarProperty Name="IDUserFK" ColumnName="IDUserFK" />
+          <ScalarProperty Name="IDFuncionFK" ColumnName="IDFuncionFK" />
+          <ScalarProperty Name="PrecioNeto" ColumnName="PrecioNeto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALAS">
+      <EntityTypeMapping TypeName="AstrofilmModel.SALAS">
+        <MappingFragment StoreEntitySet="SALAS">
+          <ScalarProperty Name="IDSala" ColumnName="IDSala" />
+          <ScalarProperty Name="Aforo" ColumnName="Aforo" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRABAJADORES">
+      <EntityTypeMapping TypeName="AstrofilmModel.TRABAJADORES">
+        <MappingFragment StoreEntitySet="TRABAJADORES">
+          <ScalarProperty Name="IDTrabajador" ColumnName="IDTrabajador" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="FecNac" ColumnName="FecNac" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="AstrofilmModel.USUARIOS">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="FecNac" ColumnName="FecNac" />
+          <ScalarProperty Name="TipoUser" ColumnName="TipoUser" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Premium" ColumnName="Premium" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COLABORADORES_LISTAS">
+      <EntityTypeMapping TypeName="AstrofilmModel.COLABORADORES_LISTAS">
+        <MappingFragment StoreEntitySet="COLABORADORES_LISTAS">
+          <ScalarProperty Name="IDUserFK" ColumnName="IDUserFK" />
+          <ScalarProperty Name="IDListaFK" ColumnName="IDListaFK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS_AMIGOS">
+      <EntityTypeMapping TypeName="AstrofilmModel.USUARIOS_AMIGOS">
+        <MappingFragment StoreEntitySet="USUARIOS_AMIGOS">
+          <ScalarProperty Name="IDUserFK" ColumnName="IDUserFK" />
+          <ScalarProperty Name="IDAmigoFK" ColumnName="IDAmigoFK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="LISTA_PELI" TypeName="AstrofilmModel.LISTA_PELI" StoreEntitySet="LISTA_PELI">
+      <EndProperty Name="LISTAS">
+        <ScalarProperty Name="IDLista" ColumnName="IDListaFK" />
+      </EndProperty>
+      <EndProperty Name="PELICULAS">
+        <ScalarProperty Name="IDPelicula" ColumnName="IDPeliFK" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PELI_GENERO" TypeName="AstrofilmModel.PELI_GENERO" StoreEntitySet="PELI_GENERO">
+      <EndProperty Name="GENEROS">
+        <ScalarProperty Name="IDGenero" ColumnName="IDGeneroFK" />
+      </EndProperty>
+      <EndProperty Name="PELICULAS">
+        <ScalarProperty Name="IDPelicula" ColumnName="IDPeliFK" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PELI_TRABAJADOR" TypeName="AstrofilmModel.PELI_TRABAJADOR" StoreEntitySet="PELI_TRABAJADOR">
+      <EndProperty Name="PELICULAS">
+        <ScalarProperty Name="IDPelicula" ColumnName="IDPeliFK" />
+      </EndProperty>
+      <EndProperty Name="TRABAJADORES">
+        <ScalarProperty Name="IDTrabajador" ColumnName="IDTrabajadorFK" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

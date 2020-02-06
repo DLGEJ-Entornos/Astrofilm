@@ -40,8 +40,6 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
           </Key>
           <Property Name="IDGenero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="FecNac" Type="date" Nullable="false" />
-          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF.dbo.LISTA_PELI' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -91,8 +89,7 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
           <Property Name="Titulo" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Año" Type="date" Nullable="false" />
           <Property Name="PuntMedia" Type="decimal" Precision="2" Scale="1" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Premium" Type="bit" Nullable="false" />
+          <Property Name="Imagen" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="RESERVA">
           <Key>
@@ -359,37 +356,6 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="AstrofilmModelStoreContainer">
           <EntitySet Name="CRITICAS" EntityType="Self.CRITICAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FUNCIONES" EntityType="Self.FUNCIONES" Schema="dbo" store:Type="Tables" />
@@ -536,8 +502,6 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
           </Key>
           <Property Name="IDGenero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FecNac" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="PELICULAS" Relationship="Self.PELI_GENERO" FromRole="GENEROS" ToRole="PELICULAS" />
         </EntityType>
         <EntityType Name="LISTAS">
@@ -561,8 +525,7 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
           <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Año" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PuntMedia" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Premium" Type="Boolean" Nullable="false" />
+          <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CRITICAS" Relationship="Self.CriticaPeliFK" FromRole="PELICULAS" ToRole="CRITICAS" />
           <NavigationProperty Name="FUNCIONES" Relationship="Self.FuncionPeliFK" FromRole="PELICULAS" ToRole="FUNCIONES" />
           <NavigationProperty Name="LISTAS" Relationship="Self.LISTA_PELI" FromRole="PELICULAS" ToRole="LISTAS" />
@@ -862,48 +825,7 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
             <End Role="PELICULAS" EntitySet="PELICULAS" />
             <End Role="TRABAJADORES" EntitySet="TRABAJADORES" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AstrofilmModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AstrofilmModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -937,8 +859,6 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
               <MappingFragment StoreEntitySet="GENEROS">
                 <ScalarProperty Name="IDGenero" ColumnName="IDGenero" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="FecNac" ColumnName="FecNac" />
-                <ScalarProperty Name="Pais" ColumnName="Pais" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -960,8 +880,7 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="Año" ColumnName="Año" />
                 <ScalarProperty Name="PuntMedia" ColumnName="PuntMedia" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Premium" ColumnName="Premium" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1062,30 +981,6 @@ advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTRO
               <ScalarProperty Name="IDTrabajador" ColumnName="IDTrabajadorFK" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="AstrofilmModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="AstrofilmModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="AstrofilmModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="AstrofilmModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="AstrofilmModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="AstrofilmModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="AstrofilmModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="AstrofilmModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="AstrofilmModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

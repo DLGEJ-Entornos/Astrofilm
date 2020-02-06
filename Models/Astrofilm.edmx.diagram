@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b288c4c8aeb34c9fa5d2ccc35c613ddb" Name="Diagram1">
+      <Diagram DiagramId="f9bbff69a7124956b2415da39c9af157" Name="Diagram1">
         <EntityTypeShape EntityType="AstrofilmModel.CRITICAS" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="AstrofilmModel.FUNCIONES" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AstrofilmModel.GENEROS" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel.GENEROS" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AstrofilmModel.LISTAS" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="AstrofilmModel.PELICULAS" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel.PELICULAS" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="AstrofilmModel.RESERVA" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AstrofilmModel.SALAS" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AstrofilmModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AstrofilmModel.TRABAJADORES" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="AstrofilmModel.USUARIOS" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AstrofilmModel.COLABORADORES_LISTAS" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AstrofilmModel.USUARIOS_AMIGOS" Width="2.375" PointX="2.125" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel.USUARIOS_AMIGOS" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
         <AssociationConnector Association="AstrofilmModel.CriticaPeliFK" ManuallyRouted="false" />
         <AssociationConnector Association="AstrofilmModel.CriticaUserFK" ManuallyRouted="false" />
         <AssociationConnector Association="AstrofilmModel.FuncionPeliFK" ManuallyRouted="false" />

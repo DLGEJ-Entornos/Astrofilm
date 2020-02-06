@@ -28,8 +28,7 @@ namespace Astrofilm.Models
         public string Titulo { get; set; }
         public System.DateTime Año { get; set; }
         public decimal PuntMedia { get; set; }
-        public string Email { get; set; }
-        public bool Premium { get; set; }
+        public string Imagen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CRITICAS> CRITICAS { get; set; }

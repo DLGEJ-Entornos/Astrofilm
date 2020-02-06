@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AstrofilmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF.dbo.COLABORADORES_LISTAS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="COLABORADORES_LISTAS">
+    <Key>
+      <PropertyRef Name="IDListaFK" />
+    </Key>
+    <Property Name="IDUserFK" Type="int" />
+    <Property Name="IDListaFK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CRITICAS">
+    <Key>
+      <PropertyRef Name="IDCritica" />
+    </Key>
+    <Property Name="IDCritica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Texto" Type="nvarchar" MaxLength="3000" Nullable="false" />
+    <Property Name="IDUserFK" Type="int" Nullable="false" />
+    <Property Name="IDPeliFK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FUNCIONES">
+    <Key>
+      <PropertyRef Name="IDFuncion" />
+    </Key>
+    <Property Name="IDFuncion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Disponibles" Type="int" />
+    <Property Name="PrecioBruto" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+    <Property Name="IDPeliFK" Type="int" Nullable="false" />
+    <Property Name="IDSalaFK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GENEROS">
+    <Key>
+      <PropertyRef Name="IDGenero" />
+    </Key>
+    <Property Name="IDGenero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF.dbo.LISTA_PELI' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="LISTA_PELI">
+    <Key>
+      <PropertyRef Name="IDListaFK" />
+      <PropertyRef Name="IDPeliFK" />
+    </Key>
+    <Property Name="IDListaFK" Type="int" Nullable="false" />
+    <Property Name="IDPeliFK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LISTAS">
+    <Key>
+      <PropertyRef Name="IDLista" />
+    </Key>
+    <Property Name="IDLista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Publica" Type="bit" Nullable="false" />
+    <Property Name="NElementos" Type="int" />
+    <Property Name="PropietarioFK" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF.dbo.PELI_GENERO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PELI_GENERO">
+    <Key>
+      <PropertyRef Name="IDPeliFK" />
+      <PropertyRef Name="IDGeneroFK" />
+    </Key>
+    <Property Name="IDPeliFK" Type="int" Nullable="false" />
+    <Property Name="IDGeneroFK" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF.dbo.PELI_TRABAJADOR' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PELI_TRABAJADOR">
+    <Key>
+      <PropertyRef Name="IDPeliFK" />
+      <PropertyRef Name="IDTrabajadorFK" />
+    </Key>
+    <Property Name="IDPeliFK" Type="int" Nullable="false" />
+    <Property Name="IDTrabajadorFK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PELICULAS">
+    <Key>
+      <PropertyRef Name="IDPelicula" />
+    </Key>
+    <Property Name="IDPelicula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Año" Type="date" Nullable="false" />
+    <Property Name="PuntMedia" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+    <Property Name="Imagen" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RESERVA">
+    <Key>
+      <PropertyRef Name="IDReserva" />
+    </Key>
+    <Property Name="IDReserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FecReserva" Type="datetime" Nullable="false" />
+    <Property Name="NumButaca" Type="int" Nullable="false" />
+    <Property Name="IDUserFK" Type="int" Nullable="false" />
+    <Property Name="IDFuncionFK" Type="int" Nullable="false" />
+    <Property Name="PrecioNeto" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SALAS">
+    <Key>
+      <PropertyRef Name="IDSala" />
+    </Key>
+    <Property Name="IDSala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Aforo" Type="int" Nullable="false" />
+    <Property Name="Ciudad" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TRABAJADORES">
+    <Key>
+      <PropertyRef Name="IDTrabajador" />
+    </Key>
+    <Property Name="IDTrabajador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="int" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FecNac" Type="date" Nullable="false" />
+    <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="IDUsuario" />
+    </Key>
+    <Property Name="IDUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="FecNac" Type="date" Nullable="false" />
+    <Property Name="TipoUser" Type="bit" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Premium" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF.dbo.USUARIOS_AMIGOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="USUARIOS_AMIGOS">
+    <Key>
+      <PropertyRef Name="IDAmigoFK" />
+    </Key>
+    <Property Name="IDUserFK" Type="int" />
+    <Property Name="IDAmigoFK" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="AmigoUsuarioFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="USUARIOS_AMIGOS" Type="Self.USUARIOS_AMIGOS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="USUARIOS_AMIGOS">
+        <PropertyRef Name="IDAmigoFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ColaboUsuarioFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+    <End Role="COLABORADORES_LISTAS" Type="Self.COLABORADORES_LISTAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="COLABORADORES_LISTAS">
+        <PropertyRef Name="IDUserFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CriticaPeliFK">
+    <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="1" />
+    <End Role="CRITICAS" Type="Self.CRITICAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULAS">
+        <PropertyRef Name="IDPelicula" />
+      </Principal>
+      <Dependent Role="CRITICAS">
+        <PropertyRef Name="IDPeliFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CriticaUserFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="CRITICAS" Type="Self.CRITICAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="CRITICAS">
+        <PropertyRef Name="IDUserFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FuncionPeliFK">
+    <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="1" />
+    <End Role="FUNCIONES" Type="Self.FUNCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULAS">
+        <PropertyRef Name="IDPelicula" />
+      </Principal>
+      <Dependent Role="FUNCIONES">
+        <PropertyRef Name="IDPeliFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FuncionSalaFK">
+    <End Role="SALAS" Type="Self.SALAS" Multiplicity="1" />
+    <End Role="FUNCIONES" Type="Self.FUNCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SALAS">
+        <PropertyRef Name="IDSala" />
+      </Principal>
+      <Dependent Role="FUNCIONES">
+        <PropertyRef Name="IDSalaFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ListaListaFK">
+    <End Role="LISTAS" Type="Self.LISTAS" Multiplicity="1" />
+    <End Role="COLABORADORES_LISTAS" Type="Self.COLABORADORES_LISTAS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="LISTAS">
+        <PropertyRef Name="IDLista" />
+      </Principal>
+      <Dependent Role="COLABORADORES_LISTAS">
+        <PropertyRef Name="IDListaFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ListaPeli_ListaFK">
+    <End Role="LISTAS" Type="Self.LISTAS" Multiplicity="1" />
+    <End Role="LISTA_PELI" Type="Self.LISTA_PELI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LISTAS">
+        <PropertyRef Name="IDLista" />
+      </Principal>
+      <Dependent Role="LISTA_PELI">
+        <PropertyRef Name="IDListaFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ListaPeli_PeliFK">
+    <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="1" />
+    <End Role="LISTA_PELI" Type="Self.LISTA_PELI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULAS">
+        <PropertyRef Name="IDPelicula" />
+      </Principal>
+      <Dependent Role="LISTA_PELI">
+        <PropertyRef Name="IDPeliFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ListaPropietarioFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="LISTAS" Type="Self.LISTAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="LISTAS">
+        <PropertyRef Name="PropietarioFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeliGenero_GeneroFK">
+    <End Role="GENEROS" Type="Self.GENEROS" Multiplicity="1" />
+    <End Role="PELI_GENERO" Type="Self.PELI_GENERO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GENEROS">
+        <PropertyRef Name="IDGenero" />
+      </Principal>
+      <Dependent Role="PELI_GENERO">
+        <PropertyRef Name="IDGeneroFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeliGenero_PeliFK">
+    <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="1" />
+    <End Role="PELI_GENERO" Type="Self.PELI_GENERO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULAS">
+        <PropertyRef Name="IDPelicula" />
+      </Principal>
+      <Dependent Role="PELI_GENERO">
+        <PropertyRef Name="IDPeliFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PeliPeliFK">
+    <End Role="PELICULAS" Type="Self.PELICULAS" Multiplicity="1" />
+    <End Role="PELI_TRABAJADOR" Type="Self.PELI_TRABAJADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PELICULAS">
+        <PropertyRef Name="IDPelicula" />
+      </Principal>
+      <Dependent Role="PELI_TRABAJADOR">
+        <PropertyRef Name="IDPeliFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReservaFuncionFK">
+    <End Role="FUNCIONES" Type="Self.FUNCIONES" Multiplicity="1" />
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FUNCIONES">
+        <PropertyRef Name="IDFuncion" />
+      </Principal>
+      <Dependent Role="RESERVA">
+        <PropertyRef Name="IDFuncionFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReservaUserFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+    <End Role="RESERVA" Type="Self.RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="RESERVA">
+        <PropertyRef Name="IDUserFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TrabajadorTrabajadorFK">
+    <End Role="TRABAJADORES" Type="Self.TRABAJADORES" Multiplicity="1" />
+    <End Role="PELI_TRABAJADOR" Type="Self.PELI_TRABAJADOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRABAJADORES">
+        <PropertyRef Name="IDTrabajador" />
+      </Principal>
+      <Dependent Role="PELI_TRABAJADOR">
+        <PropertyRef Name="IDTrabajadorFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsuarioUsuarioFK">
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="0..1" />
+    <End Role="USUARIOS_AMIGOS" Type="Self.USUARIOS_AMIGOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIOS">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="USUARIOS_AMIGOS">
+        <PropertyRef Name="IDUserFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AstrofilmModelStoreContainer">
+    <EntitySet Name="CRITICAS" EntityType="Self.CRITICAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FUNCIONES" EntityType="Self.FUNCIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GENEROS" EntityType="Self.GENEROS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LISTAS" EntityType="Self.LISTAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PELICULAS" EntityType="Self.PELICULAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RESERVA" EntityType="Self.RESERVA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SALAS" EntityType="Self.SALAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRABAJADORES" EntityType="Self.TRABAJADORES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="COLABORADORES_LISTAS" EntityType="Self.COLABORADORES_LISTAS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [COLABORADORES_LISTAS].[IDUserFK] AS [IDUserFK], 
+    [COLABORADORES_LISTAS].[IDListaFK] AS [IDListaFK]
+    FROM [dbo].[COLABORADORES_LISTAS] AS [COLABORADORES_LISTAS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LISTA_PELI" EntityType="Self.LISTA_PELI" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LISTA_PELI].[IDListaFK] AS [IDListaFK], 
+    [LISTA_PELI].[IDPeliFK] AS [IDPeliFK]
+    FROM [dbo].[LISTA_PELI] AS [LISTA_PELI]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PELI_GENERO" EntityType="Self.PELI_GENERO" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PELI_GENERO].[IDPeliFK] AS [IDPeliFK], 
+    [PELI_GENERO].[IDGeneroFK] AS [IDGeneroFK]
+    FROM [dbo].[PELI_GENERO] AS [PELI_GENERO]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PELI_TRABAJADOR" EntityType="Self.PELI_TRABAJADOR" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PELI_TRABAJADOR].[IDPeliFK] AS [IDPeliFK], 
+    [PELI_TRABAJADOR].[IDTrabajadorFK] AS [IDTrabajadorFK]
+    FROM [dbo].[PELI_TRABAJADOR] AS [PELI_TRABAJADOR]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="USUARIOS_AMIGOS" EntityType="Self.USUARIOS_AMIGOS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [USUARIOS_AMIGOS].[IDUserFK] AS [IDUserFK], 
+    [USUARIOS_AMIGOS].[IDAmigoFK] AS [IDAmigoFK]
+    FROM [dbo].[USUARIOS_AMIGOS] AS [USUARIOS_AMIGOS]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="AmigoUsuarioFK" Association="Self.AmigoUsuarioFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="USUARIOS_AMIGOS" EntitySet="USUARIOS_AMIGOS" />
+    </AssociationSet>
+    <AssociationSet Name="ColaboUsuarioFK" Association="Self.ColaboUsuarioFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="COLABORADORES_LISTAS" EntitySet="COLABORADORES_LISTAS" />
+    </AssociationSet>
+    <AssociationSet Name="CriticaPeliFK" Association="Self.CriticaPeliFK">
+      <End Role="PELICULAS" EntitySet="PELICULAS" />
+      <End Role="CRITICAS" EntitySet="CRITICAS" />
+    </AssociationSet>
+    <AssociationSet Name="CriticaUserFK" Association="Self.CriticaUserFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="CRITICAS" EntitySet="CRITICAS" />
+    </AssociationSet>
+    <AssociationSet Name="FuncionPeliFK" Association="Self.FuncionPeliFK">
+      <End Role="PELICULAS" EntitySet="PELICULAS" />
+      <End Role="FUNCIONES" EntitySet="FUNCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FuncionSalaFK" Association="Self.FuncionSalaFK">
+      <End Role="SALAS" EntitySet="SALAS" />
+      <End Role="FUNCIONES" EntitySet="FUNCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="ListaListaFK" Association="Self.ListaListaFK">
+      <End Role="LISTAS" EntitySet="LISTAS" />
+      <End Role="COLABORADORES_LISTAS" EntitySet="COLABORADORES_LISTAS" />
+    </AssociationSet>
+    <AssociationSet Name="ListaPeli_ListaFK" Association="Self.ListaPeli_ListaFK">
+      <End Role="LISTAS" EntitySet="LISTAS" />
+      <End Role="LISTA_PELI" EntitySet="LISTA_PELI" />
+    </AssociationSet>
+    <AssociationSet Name="ListaPeli_PeliFK" Association="Self.ListaPeli_PeliFK">
+      <End Role="PELICULAS" EntitySet="PELICULAS" />
+      <End Role="LISTA_PELI" EntitySet="LISTA_PELI" />
+    </AssociationSet>
+    <AssociationSet Name="ListaPropietarioFK" Association="Self.ListaPropietarioFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="LISTAS" EntitySet="LISTAS" />
+    </AssociationSet>
+    <AssociationSet Name="PeliGenero_GeneroFK" Association="Self.PeliGenero_GeneroFK">
+      <End Role="GENEROS" EntitySet="GENEROS" />
+      <End Role="PELI_GENERO" EntitySet="PELI_GENERO" />
+    </AssociationSet>
+    <AssociationSet Name="PeliGenero_PeliFK" Association="Self.PeliGenero_PeliFK">
+      <End Role="PELICULAS" EntitySet="PELICULAS" />
+      <End Role="PELI_GENERO" EntitySet="PELI_GENERO" />
+    </AssociationSet>
+    <AssociationSet Name="PeliPeliFK" Association="Self.PeliPeliFK">
+      <End Role="PELICULAS" EntitySet="PELICULAS" />
+      <End Role="PELI_TRABAJADOR" EntitySet="PELI_TRABAJADOR" />
+    </AssociationSet>
+    <AssociationSet Name="ReservaFuncionFK" Association="Self.ReservaFuncionFK">
+      <End Role="FUNCIONES" EntitySet="FUNCIONES" />
+      <End Role="RESERVA" EntitySet="RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="ReservaUserFK" Association="Self.ReservaUserFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="RESERVA" EntitySet="RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="TrabajadorTrabajadorFK" Association="Self.TrabajadorTrabajadorFK">
+      <End Role="TRABAJADORES" EntitySet="TRABAJADORES" />
+      <End Role="PELI_TRABAJADOR" EntitySet="PELI_TRABAJADOR" />
+    </AssociationSet>
+    <AssociationSet Name="UsuarioUsuarioFK" Association="Self.UsuarioUsuarioFK">
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+      <End Role="USUARIOS_AMIGOS" EntitySet="USUARIOS_AMIGOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

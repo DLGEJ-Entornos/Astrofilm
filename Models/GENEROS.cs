@@ -22,8 +22,6 @@ namespace Astrofilm.Models
     
         public int IDGenero { get; set; }
         public string Nombre { get; set; }
-        public System.DateTime FecNac { get; set; }
-        public string Pais { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PELICULAS> PELICULAS { get; set; }

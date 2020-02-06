@@ -20,12 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.PuntMedia)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Premium)
-        </th>
         <th></th>
     </tr>
 
@@ -40,12 +34,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PuntMedia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Premium)
             </td>
             <td>
                 @Html.ActionLink("Editar", "Edit", new { id = item.IDPelicula }) |
