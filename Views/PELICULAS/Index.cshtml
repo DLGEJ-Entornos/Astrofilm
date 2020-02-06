@@ -20,27 +20,32 @@
         <th>
             @Html.DisplayNameFor(model => model.PuntMedia)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Año)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PuntMedia)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.IDPelicula }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.IDPelicula }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.IDPelicula })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Titulo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Año)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PuntMedia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Imagen)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { id = item.IDPelicula }) |
+        @Html.ActionLink("Detalles", "Details", new { id = item.IDPelicula }) |
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.IDPelicula })
+    </td>
+</tr>
     }
 </table>
 
