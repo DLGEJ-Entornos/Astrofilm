@@ -126,9 +126,24 @@ namespace Astrofilm.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             PELICULAS pELICULAS = db.PELICULAS.Find(id);
-            db.PELICULAS.Remove(pELICULAS);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+
+            if (pELICULAS == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {  // Hay una condición extra que comprueba. Ver apuntes.
+                DirectoryInfo Directorio = new
+                    DirectoryInfo(Server.MapPath("~/Content/Images/Productos/"));
+                FileInfo[] Imagenes = Directorio.GetFiles(pELICULAS.Imagen);
+                if(Imagenes.Count() > 0)
+                {
+                    Imagenes[0].Delete();
+                }
+                db.PELICULAS.Remove(pELICULAS);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            } 
         }
 
         protected override void Dispose(bool disposing)

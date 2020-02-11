@@ -1,13 +1,13 @@
 ﻿@model Astrofilm.Models.PELICULAS
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Create";
 }
 
 <h2>Crear</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create","PELICULAS",FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -41,7 +41,13 @@
             </div>
         </div>
 
-        // FALTA EL CREATE PARA PA IMAGEN
+        <div class="form-group">
+            @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Imagen, new { type = "file", accept = "image/*" })
+                @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
