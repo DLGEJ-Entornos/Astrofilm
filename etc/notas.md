@@ -22,5 +22,8 @@ En lugar de tipo de dato DATA => DATATIME
 
 
 
- En GENEROS Eliminar o ocultar campos : FecNac y Pais 
- En CRITICAS Añadir fecha de critica BD.
+
+--------------------FALLO BOOTSTRAP--------------------------
+https://stackoverflow.com/questions/48550955/mvc-bootstrap-navbar-not-working-after-running-nuget-updates
+
+* Puede que en la v.4 Cambien los nombres de las clases. (navbar-inverse => navbar-dark)
