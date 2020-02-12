@@ -1,5 +1,5 @@
 ## TODO
-* Arreglar Boostrap.
+* Arreglar Boostrap.(check cargas Navegador)
 * Crear Front mínimo Archivo.
 * Crear funcionalidad (filtrado, busqueda,etc) Para Archivo.
 
@@ -29,6 +29,6 @@ En lugar de tipo de dato DATA => DATATIME
 
 
 --------------------FALLO BOOTSTRAP--------------------------
-https://stackoverflow.com/questions/48550955/mvc-bootstrap-navbar-not-working-after-running-nuget-updates
-
+* https://stackoverflow.com/questions/48550955/mvc-bootstrap-navbar-not-working-after-running-nuget-updates
+* https://getbootstrap.com/docs/4.0/migration/
 * Puede que en la v.4 Cambien los nombres de las clases. (navbar-inverse => navbar-dark)
