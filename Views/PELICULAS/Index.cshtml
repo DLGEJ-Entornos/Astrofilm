@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Index";
+    
+
 }
 
 <h2>Peliculas</h2>
@@ -37,8 +39,11 @@
     <td>
         @Html.DisplayFor(modelItem => item.PuntMedia)
     </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Imagen)
+    <td class="display-field">
+        @*@Html.DisplayFor(modelItem => item.Imagen)*@
+        @*<img src="@Url.Content(@Model.Imagen)"/>*@
+        
+        <img src="~/Content/Images/Peliculas/@Html.DisplayFor(modelItem => item.Imagen)" style="width:100px"/>
     </td>
     <td>
         @Html.ActionLink("Editar", "Edit", new { id = item.IDPelicula }) |
