@@ -93,12 +93,16 @@ namespace Astrofilm.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Email,Premium")] PELICULAS pELICULAS)
+        public ActionResult Edit([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Email,Premium")] PELICULAS pELICULAS, HttpPostedFileBase Imagen)
         {
             if (ModelState.IsValid)
             {
+                db.PELICULAS.Add(pELICULAS);
+                db.SaveChanges();
+                pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
                 db.Entry(pELICULAS).State = EntityState.Modified;
                 db.SaveChanges();
+                Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
                 return RedirectToAction("Index");
             }
             return View(pELICULAS);
