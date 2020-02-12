@@ -7,10 +7,10 @@
 <h2>Editar</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "PELICULAS", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>PELICULAS</h4>
         <hr />

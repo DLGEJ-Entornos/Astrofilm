@@ -97,12 +97,21 @@ namespace Astrofilm.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.PELICULAS.Add(pELICULAS);
+                //db.PELICULAS.Edit(pELICULAS);
+                //db.SaveChanges();
+                //pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
+                //db.Entry(pELICULAS).State = EntityState.Modified;
+                //db.SaveChanges();
+                //Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
+                //return RedirectToAction("Index");
+
+                db.Entry(pELICULAS).State = EntityState.Modified;
                 db.SaveChanges();
                 pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
                 db.Entry(pELICULAS).State = EntityState.Modified;
                 db.SaveChanges();
                 Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
+
                 return RedirectToAction("Index");
             }
             return View(pELICULAS);
@@ -136,13 +145,16 @@ namespace Astrofilm.Controllers
                 return HttpNotFound();
             }
             else
-            {  // Hay una condición extra que comprueba. Ver apuntes.
-                DirectoryInfo Directorio = new
-                    DirectoryInfo(Server.MapPath("~/Content/Images/Productos/"));
-                FileInfo[] Imagenes = Directorio.GetFiles(pELICULAS.Imagen);
-                if(Imagenes.Count() > 0)
-                {
-                    Imagenes[0].Delete();
+            {
+                if (pELICULAS.Imagen != null)
+                {// Hay una condición extra que comprueba. Ver apuntes.
+                    DirectoryInfo Directorio = new
+                        DirectoryInfo(Server.MapPath("~/Content/Images/Peliculas/"));
+                    FileInfo[] Imagenes = Directorio.GetFiles(pELICULAS.Imagen);
+                    if (Imagenes.Count() > 0)
+                    {
+                        Imagenes[0].Delete();
+                    }
                 }
                 db.PELICULAS.Remove(pELICULAS);
                 db.SaveChanges();
