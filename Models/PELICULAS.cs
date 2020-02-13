@@ -29,7 +29,6 @@ namespace Astrofilm.Models
         public string Titulo { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:MM/yyyy}")]
-        //[Display(Name = "TEST")]
         public System.DateTime Año { get; set; }
         public decimal PuntMedia { get; set; }
         public string Imagen { get; set; }

@@ -9,6 +9,15 @@
             width: 7.5em;
             height: 9em;
         }
+        #sliderCards{
+            max-height:20em;
+            /*max-width:90em;*/
+            display: flow-root;
+            overflow:scroll !important;
+        }
+        .card{
+            /*display:inline-block;*/
+        }
     </style>
 </head>
 
@@ -17,12 +26,13 @@
 }
 <br />
 <br />
-<h2>Archivo  de Películas</h2>
+<h2 class="text-center">Archivo  de Películas</h2>
 
-<div id="sliderCards" class="border border-primary text-center">
-    @foreach (var item in Model)
+<h3>TEST</h3>
+<div id="sliderCards" class="sli1 border border-primary text-center">
+    @foreach (var item in Model) //CARTAS ELEMENTOS INDIVIDUALES
     {
-        <div class="card table-bordered border border-secondary m-1" style="width: 18rem; display:inline-block;">
+        <div class="card table-bordered border border-secondary m-1 d-inline-block" style="width: 18rem;">
             @*<img src="..." class="card-img-top" alt="...">*@
             <div class="card-body">
                 <h5 class="card-title">
@@ -33,10 +43,15 @@
 
                 @Html.DisplayFor(modelItem => item.Año)
 
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Ver</a>
+                @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
+                <a href="#" class="btn btn-primary d-block w-25 mx-auto mt-2">Ver</a>
             </div>
         </div>
-
     }
 </div>
+
+
+<script type="text/javascript">
+    
+    
+</script>
