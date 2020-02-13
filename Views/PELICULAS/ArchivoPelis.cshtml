@@ -1,13 +1,25 @@
 ﻿@model IEnumerable<Astrofilm.Models.PELICULAS>
 @Styles.Render("~/Content/Propios/archivosPelis.css")
 
+
+<head>
+    @*<link href="~/Content/Propios/archivosPelis.css" rel="stylesheet" />*@
+    <style>
+        img {
+            width: 7.5em;
+            height: 9em;
+        }
+    </style>
+</head>
+
 @{
     ViewBag.Title = "ArchivoPelis";
 }
-    <br /><br />
+<br />
+<br />
 <h2>Archivo  de Películas</h2>
 
-<div id="sliderCards" class="border border-primary">
+<div id="sliderCards" class="border border-primary text-center">
     @foreach (var item in Model)
     {
         <div class="card table-bordered border border-secondary m-1" style="width: 18rem; display:inline-block;">
@@ -16,8 +28,11 @@
                 <h5 class="card-title">
                     @Html.DisplayFor(modelItem => item.Titulo)
                     @*@Html.DisplayFor(modelItem => item.Titulo)*@
-                    <img src="~/Content/Images/Peliculas/@Html.DisplayFor(modelItem => item.Imagen)" style="width:50px" />
                 </h5>
+                <img src="~/Content/Images/Peliculas/@Html.DisplayFor(modelItem => item.Imagen)" class="d-block mx-auto mt-2" style="" />
+
+                @Html.DisplayFor(modelItem => item.Año)
+
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Ver</a>
             </div>

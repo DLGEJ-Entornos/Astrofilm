@@ -11,7 +11,8 @@ namespace Astrofilm.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PELICULAS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,6 +27,9 @@ namespace Astrofilm.Models
     
         public int IDPelicula { get; set; }
         public string Titulo { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MM/yyyy}")]
+        //[Display(Name = "TEST")]
         public System.DateTime Año { get; set; }
         public decimal PuntMedia { get; set; }
         public string Imagen { get; set; }

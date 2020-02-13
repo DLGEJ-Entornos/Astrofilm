@@ -1,5 +1,10 @@
 ﻿body {
+    background-color:red;
 }
 /*#sliderCards{
     border: 1px solid black;
 }*/
+img {
+    width: 3em;
+    height: 3em;
+}
