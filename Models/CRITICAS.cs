@@ -11,12 +11,16 @@ namespace Astrofilm.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CRITICAS
     {
+        [Display(Name = "ID")]
         public int IDCritica { get; set; }
         public string Texto { get; set; }
+        [Display(Name = "ID Usuario")]
         public int IDUserFK { get; set; }
+        [Display(Name = "ID Pelicula")]
         public int IDPeliFK { get; set; }
     
         public virtual PELICULAS PELICULAS { get; set; }

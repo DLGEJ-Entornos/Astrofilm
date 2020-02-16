@@ -7,44 +7,50 @@
 <h2>Detalles</h2>
 
 <div>
-    <h4>PELICULAS</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
+    <main class="w-50 float-left d-inline-block">
+        <h4>PELICULAS</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Titulo)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Año)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Año)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Año)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Año)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PuntMedia)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PuntMedia)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PuntMedia)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PuntMedia)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.Imagen)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-
-    </dl>
-</div>
+                <dd>
+                    @Html.DisplayFor(model => model.Imagen)
+                    <img src="~/Content/Images/Peliculas/@Html.DisplayFor(item => item.Imagen)" style="width:600px"/>
+                </dd>*@
+        </dl>
+    </main>
+    <aside class="float-right">
+        @*<h2>@Html.DisplayFor(model => model.Imagen)</h2>*@
+        <img src="~/Content/Images/Peliculas/@Html.DisplayFor(item => item.Imagen)" style="width:400px;" />
+    </aside>
+</div> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />   
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.IDPelicula }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver al Inicio", "Index")
 </p>

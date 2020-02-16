@@ -28,91 +28,86 @@ namespace Astrofilm.Controllers
             return View(db.PELICULAS.ToList());
         }
 
-        // GET: PELICULAS/Details/5
-        [Authorize(Roles = "Administrador")]
-        public ActionResult Details(int? id)
+    // GET: PELICULAS/Details/5
+    [Authorize(Roles = "Administrador")]
+    public ActionResult Details(int? id)
+    {
+        if (id == null)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PELICULAS pELICULAS = db.PELICULAS.Find(id);
-            if (pELICULAS == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pELICULAS);
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
-
-        // GET: PELICULAS/Create
-        [Authorize(Roles = "Administrador")]
-        public ActionResult Create()
+        PELICULAS pELICULAS = db.PELICULAS.Find(id);
+        if (pELICULAS == null)
         {
-            return View();
+            return HttpNotFound();
         }
+        return View(pELICULAS);
+    }
 
-        // POST: PELICULAS/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Administrador")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Imagen")] PELICULAS pELICULAS, HttpPostedFileBase Imagen)
+    // GET: PELICULAS/Create
+    [Authorize(Roles = "Administrador")]
+    public ActionResult Create()
+    {
+        return View();
+    }
+
+    // POST: PELICULAS/Create
+    // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+    // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+    [Authorize(Roles = "Administrador")]
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Create([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Imagen")] PELICULAS pELICULAS, HttpPostedFileBase Imagen)
+    {
+        if (ModelState.IsValid)
         {
-            if (ModelState.IsValid)
+            db.PELICULAS.Add(pELICULAS);
+            db.SaveChanges();
+            pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
+            db.Entry(pELICULAS).State = EntityState.Modified;
+            db.SaveChanges();
+            Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
+            return RedirectToAction("Index");
+        }
+        return View(pELICULAS);
+    }
+
+    // GET: PELICULAS/Edit/5
+    [Authorize(Roles = "Administrador")]
+    public ActionResult Edit(int? id)
+    {
+        if (id == null)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        PELICULAS pELICULAS = db.PELICULAS.Find(id);
+        if (pELICULAS == null)
+        {
+            return HttpNotFound();
+        }
+        return View(pELICULAS);
+    }
+
+    // POST: PELICULAS/Edit/5
+    // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+    // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Edit([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Email,Premium")] PELICULAS pELICULAS, HttpPostedFileBase Imagen)
+    {
+        if (ModelState.IsValid)
+        {
+            db.Entry(pELICULAS).State = EntityState.Modified;
+            db.SaveChanges();
+
+            if (Imagen != null) //No guardamos la imagen del input que es null por no selecionar (QUIERO LA QUE YA TENIA PUESTA)
             {
-                db.PELICULAS.Add(pELICULAS);
-                db.SaveChanges();
                 pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
                 db.Entry(pELICULAS).State = EntityState.Modified;
                 db.SaveChanges();
                 Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
-                return RedirectToAction("Index");
             }
-            return View(pELICULAS);
-        }
-
-        // GET: PELICULAS/Edit/5
-        [Authorize(Roles = "Administrador")]
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PELICULAS pELICULAS = db.PELICULAS.Find(id);
-            if (pELICULAS == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pELICULAS);
-        }
-
-        // POST: PELICULAS/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Email,Premium")] PELICULAS pELICULAS, HttpPostedFileBase Imagen)
-        {
-            if (ModelState.IsValid)
-            {
-                //db.PELICULAS.Edit(pELICULAS);
-                //db.SaveChanges();
-                //pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
-                //db.Entry(pELICULAS).State = EntityState.Modified;
-                //db.SaveChanges();
-                //Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
-                //return RedirectToAction("Index");
-
-                db.Entry(pELICULAS).State = EntityState.Modified;
-                db.SaveChanges();
-                pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
-                db.Entry(pELICULAS).State = EntityState.Modified;
-                db.SaveChanges();
-                Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
-
-                return RedirectToAction("Index");
+            return RedirectToAction("Index");
             }
             return View(pELICULAS);
         }

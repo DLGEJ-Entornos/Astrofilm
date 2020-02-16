@@ -11,7 +11,8 @@ namespace Astrofilm.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SALAS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,6 +21,7 @@ namespace Astrofilm.Models
             this.FUNCIONES = new HashSet<FUNCIONES>();
         }
     
+        [Display(Name = "ID")]
         public int IDSala { get; set; }
         public int Aforo { get; set; }
         public string Ciudad { get; set; }

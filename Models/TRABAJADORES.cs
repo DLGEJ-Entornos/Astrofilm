@@ -11,7 +11,8 @@ namespace Astrofilm.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TRABAJADORES
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +21,12 @@ namespace Astrofilm.Models
             this.PELICULAS = new HashSet<PELICULAS>();
         }
     
+        [Display(Name = "ID")]
         public int IDTrabajador { get; set; }
         public int Tipo { get; set; }
         public string Apellido { get; set; }
         public string Nombre { get; set; }
+        [Display(Name = "Fecha de Nacimiento")]
         public System.DateTime FecNac { get; set; }
         public string Pais { get; set; }
     

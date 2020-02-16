@@ -25,12 +25,15 @@ namespace Astrofilm.Models
             this.TRABAJADORES = new HashSet<TRABAJADORES>();
         }
     
+        [Display(Name = "ID")]
         public int IDPelicula { get; set; }
         public string Titulo { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy}")]
         public System.DateTime Año { get; set; }
+        [Display(Name = "Puntuación Media")]
         public decimal PuntMedia { get; set; }
+        [Display(Name = "Portada")]
         public string Imagen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

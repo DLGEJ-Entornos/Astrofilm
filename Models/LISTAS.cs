@@ -11,7 +11,8 @@ namespace Astrofilm.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class LISTAS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +21,13 @@ namespace Astrofilm.Models
             this.PELICULAS = new HashSet<PELICULAS>();
         }
     
+        [Display(Name = "ID")]
         public int IDLista { get; set; }
         public string Titulo { get; set; }
         public bool Publica { get; set; }
+        [Display(Name = "Nº Elementos")]
         public Nullable<int> NElementos { get; set; }
+        [Display(Name = "ID Propietario")]
         public int PropietarioFK { get; set; }
     
         public virtual COLABORADORES_LISTAS COLABORADORES_LISTAS { get; set; }
