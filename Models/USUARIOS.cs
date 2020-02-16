@@ -30,6 +30,7 @@ namespace Astrofilm.Models
         public string Apellidos { get; set; }
         public string Nombre { get; set; }
         [Display(Name = "Fecha de Nacimiento")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public System.DateTime FecNac { get; set; }
         [Display(Name = "Administrador")]
         public bool TipoUser { get; set; }
