@@ -1,0 +1,63 @@
+USE [E:\SERVIDOR\SUPUESTOPRACTICOINTEGRADOR\ASTROFILM\APP_DATA\ASTROFILM.MDF]
+GO
+
+INSERT INTO [dbo].[PELI_GENERO]
+           ([IDPeliFK]
+           ,[IDGeneroFK])
+     VALUES
+	 --COMEDIA
+           (20,1),
+		   (21,1),
+		   (22,1),
+		   (23,1),
+		   (24,1),
+		   (25,1),
+		   (26,1),
+		   (27,1),
+		   (28,1),
+	 --DRAMA
+           (29,2),
+		   (30,2),
+		   (31,2),
+		   (32,2),
+		   (33,2),
+		   (34,2),
+		   (35,2),
+		   (36,2),
+		   (37,2),
+		   (38,2),
+		   (39,2),
+		   (40,2),
+		   (41,2),
+	 --WESTERN
+           (68,3),
+		   (43,3),
+		   (44,3),
+		   (45,3),
+		   (46,3),
+	 --THRILLER
+           (47,4),
+		   (48,4),
+		   (49,4),
+		   (50,4),
+		   (51,4),
+		   (52,4),
+	 --DOCUMENTAL
+           (53,5),
+		   (54,5),
+		   (55,5),
+		   (56,5),
+	 --INDEPENDIENTE
+           (57,6),
+		   (58,6),
+		   (59,6),
+		   (60,6),
+		   (61,6),
+	 --FANTASTICO
+           (62,7),
+		   (63,7),
+		   (64,7),
+		   (65,7);
+GO
+
+select * from PELI_GENERO;
