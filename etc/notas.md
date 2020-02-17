@@ -30,4 +30,17 @@ En lugar de tipo de dato DATA => DATATIME
 - Index
 - About
 
+------------------------
 
+
+## CONSULTA PARA SACAR PELIS DE 1 GENERO
+select *
+from
+	PELICULAS as P
+	INNER JOIN
+		PELI_GENERO as PG
+	ON
+		PG.IDPeliFK = P.IDPelicula
+where
+	PG.IDGeneroFK = 2;
+##

@@ -9,10 +9,35 @@
     @Scripts.Render("~/bundles/modernizr")
     @* Añadido para Datapicker de JQueryUIHelpers.Mvc5 *@
     @Styles.Render("~/Content/themes/base/css")
+    <style>
+        .navbar-header img{
+            width:6em;
+            height:6em;
+            margin-right:3em;
+        }
+        .custom{
+            font-weight:bold;
+            font-family:Candara;
+            font-size:xx-large;
+        }
+        navbar-brand{
+            color: red;
+            font-size: 5em;
+            font-family: 'Righteous', cursive;
+        }
+        li{
+            padding-right: 1.3em;
+            padding-left: 1.3em;
+            font-size: 1.2em; 
+        }
+        barra{
+            background-color:seagreen;
+        }
+    </style>
 
 </head>
 <body class="pt-0">
-    <div class="navbar navbar-expand-lg navbar-dark bg-dark"> <!--navbar-dark-->
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark barra"> <!--navbar-dark-->
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -20,7 +45,8 @@
                     @*<span class="navbar-toggler-icon"></span>
                     <span class="navbar-toggler-icon"></span>*@
                 </button>
-                @Html.ActionLink("ASTROFILM", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <img src="~/Content/propios/logo-Astrofilm.png" alt="logoAstrofilm"/>
+                @Html.ActionLink("ASTROFILM", "Index", "Home", new { area = "" }, new { @class = "navbar-brand custom" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
@@ -36,7 +62,7 @@
                         {
                             //DROPDOWN BOOTSRAP con las opciones de administracion
                             <div id="controlesAdmin" class="dropdown">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                    Administración 
                                     <span class="caret"></span>
                                 </button>
