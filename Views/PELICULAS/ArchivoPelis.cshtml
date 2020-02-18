@@ -18,25 +18,33 @@
             overflow-x: hidden !important;
             border-radius: 0.5em;
         }
-        #sliderCards::-webkit-scrollbar {
-            background-color: white;
-        }
-        #sliderCards::-webkit-scrollbar-track {
-            background: lightgrey;
-            border-radius: 0.5em;
-        }
-        #sliderCards::-webkit-scrollbar-thumb{
-            background:cornflowerblue;
-            border-radius: 0.5em;
-        }
-        #sliderCards::-webkit-scrollbar-thumb:hover{
-            border-radius: 0.5em;
-            background:gold;
-        }
+
+            #sliderCards::-webkit-scrollbar {
+                background-color: white;
+            }
+
+            #sliderCards::-webkit-scrollbar-track {
+                background: lightgrey;
+                border-radius: 0.5em;
+            }
+
+            #sliderCards::-webkit-scrollbar-thumb {
+                background: cornflowerblue;
+                border-radius: 0.5em;
+            }
+
+                #sliderCards::-webkit-scrollbar-thumb:hover {
+                    border-radius: 0.5em;
+                    background: gold;
+                }
+
         .card {
             /*display:inline-block;*/
             width: 15em;
             box-shadow: 4px 4px black;
+        }
+        h3{
+            color: cornflowerblue;
         }
     </style>
 </head>
@@ -47,37 +55,139 @@
 <br />
 <br />
 <h2 class="text-center">Archivo  de Películas</h2>
+<button type="button" class="btn btn-white">🔍</button>
 
-<h3>TEST</h3>
+<h3>Mejores Comedias</h3>
 <div id="sliderCards" class="sli1 border-top border-top-dark border-bottom border-bottom-dark text-center">
     @foreach (var item in Model) //CARTAS ELEMENTOS INDIVIDUALES
     {
-        <div class="card table-bordered border border-secondary m-1 d-inline-block">
-            @*<img src="..." class="card-img-top" alt="...">*@
-            <div class="card-body">
-                <h5 class="card-title">
-                    @Html.DisplayFor(modelItem => item.Titulo)
-                    @*@Html.DisplayFor(modelItem => item.Titulo)*@
-                </h5>
-                <img src="~/Content/Images/Peliculas/@Html.DisplayFor(modelItem => item.Imagen)" class="d-block mx-auto mt-2" />
+        foreach (var itemGen in item.GENEROS)
+        {
+            if (itemGen.IDGenero == 1)
+            {
+                <div class="card table-bordered border border-secondary m-1 d-inline-block">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @Html.DisplayFor(modelItem => item.Titulo)
+                        </h5>
+                        <img src="~/Content/Images/Peliculas/@Html.DisplayFor(modelItem => item.Imagen)" class="d-block mx-auto mt-2" />
 
-                @Html.DisplayFor(modelItem => item.Año)
+                        @Html.DisplayFor(modelItem => item.Año)
 
-                @foreach (var itemDirector in item.TRABAJADORES)
-                {
-                    <br />
-                    @Html.DisplayFor(modelItem => itemDirector.FullName); 
-                }
+                        @foreach (var itemDirector in item.TRABAJADORES)
+                        {
+                            <br />
+                            @Html.DisplayFor(modelItem => itemDirector.FullName);
+                        }
+                        @Html.ActionLink("Ver", "Details", new { id = item.IDPelicula }, new { @class = "btn btn-primary d-block w-25 mx-auto mt-2" })
+                    </div>
+                </div>
 
-                @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
-                @*<a href="#" class="btn btn-primary d-block w-25 mx-auto mt-2">Ver</a>*@
-                @Html.ActionLink("Ver", "Details", new { id = item.IDPelicula }, new { @class = "btn btn-primary d-block w-25 mx-auto mt-2" })
-            </div>
-        </div>
+            }
+        }
+
     }
 </div>
 
+<br /><br /><br />
 
+<h3>Mejores Dramas</h3>
+<div id="sliderCards" class="sli1 border-top border-top-dark border-bottom border-bottom-dark text-center">
+    @foreach (var item in Model) //CARTAS ELEMENTOS INDIVIDUALES
+    {
+        foreach (var itemGen in item.GENEROS)
+        {
+            if (itemGen.IDGenero == 2)
+            {
+                <div class="card table-bordered border border-secondary m-1 d-inline-block">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @Html.DisplayFor(modelItem => item.Titulo)
+                        </h5>
+                        <img src="~/Content/Images/Peliculas/@Html.DisplayFor(modelItem => item.Imagen)" class="d-block mx-auto mt-2" />
+
+                        @Html.DisplayFor(modelItem => item.Año)
+
+                        @foreach (var itemDirector in item.TRABAJADORES)
+                        {
+                            <br />
+                            @Html.DisplayFor(modelItem => itemDirector.FullName);
+                        }
+                        @Html.ActionLink("Ver", "Details", new { id = item.IDPelicula }, new { @class = "btn btn-primary d-block w-25 mx-auto mt-2" })
+                    </div>
+                </div>
+
+            }
+        }
+
+    }
+</div>
+
+<br /><br /><br />
+<h3>Westerns destacados</h3>
+<div id="sliderCards" class="sli1 border-top border-top-dark border-bottom border-bottom-dark text-center">
+    @foreach (var item in Model) //CARTAS ELEMENTOS INDIVIDUALES
+    {
+        foreach (var itemGen in item.GENEROS)
+        {
+            if (itemGen.IDGenero == 3)
+            {
+                <div class="card table-bordered border border-secondary m-1 d-inline-block">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @Html.DisplayFor(modelItem => item.Titulo)
+                        </h5>
+                        <img src="~/Content/Images/Peliculas/@Html.DisplayFor(modelItem => item.Imagen)" class="d-block mx-auto mt-2" />
+
+                        @Html.DisplayFor(modelItem => item.Año)
+
+                        @foreach (var itemDirector in item.TRABAJADORES)
+                        {
+                            <br />
+                            @Html.DisplayFor(modelItem => itemDirector.FullName);
+                        }
+                        @Html.ActionLink("Ver", "Details", new { id = item.IDPelicula }, new { @class = "btn btn-primary d-block w-25 mx-auto mt-2" })
+                    </div>
+                </div>
+
+            }
+        }
+
+    }
+</div>
+<br /><br /><br />
+
+<h3>LISTA - Mejores del Mes</h3>
+<div id="sliderCards" class="sli1 border-top border-top-dark border-bottom border-bottom-dark text-center">
+    @foreach (var item in Model) //CARTAS ELEMENTOS INDIVIDUALES
+    {
+        foreach (var itemList in item.LISTAS)
+        {
+            if (itemList.IDLista== 1)
+            {
+                <div class="card table-bordered border border-secondary m-1 d-inline-block">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @Html.DisplayFor(modelItem => item.Titulo)
+                        </h5>
+                        <img src="~/Content/Images/Peliculas/@Html.DisplayFor(modelItem => item.Imagen)" class="d-block mx-auto mt-2" />
+
+                        @Html.DisplayFor(modelItem => item.Año)
+
+                        @foreach (var itemDirector in item.TRABAJADORES)
+                        {
+                            <br />
+                            @Html.DisplayFor(modelItem => itemDirector.FullName);
+                        }
+                        @Html.ActionLink("Ver", "Details", new { id = item.IDPelicula }, new { @class = "btn btn-primary d-block w-25 mx-auto mt-2" })
+                    </div>
+                </div>
+
+            }
+        }
+
+    }
+</div>
 <script type="text/javascript">
 
 
