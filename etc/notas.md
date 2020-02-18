@@ -1,9 +1,7 @@
 ## TODO
 * Cambiar nombres/ocultar titulos y contenido tablas 
 * Ajusta css layout y archivos acabado PRO. 
-* Trabaja en View/Archivo (SACA DATOS VARIAS TABLAS misma VIEW)
-	* Add Models TABLAS RESTANTES! (n-m,etc)
-
+* Ajusta permisos etc en Editar MisDatos para Usuario y Admin
 --------------
 
 A la tabla FUNCIONES añadirle el campo agregado plazas disponibles. (calc de tabla reserva y salas)

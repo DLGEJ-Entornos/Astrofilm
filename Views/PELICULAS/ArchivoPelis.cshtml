@@ -46,6 +46,9 @@
         h3{
             color: cornflowerblue;
         }
+        #button-addon2{
+            color: white;
+        }
     </style>
 </head>
 
@@ -55,7 +58,17 @@
 <br />
 <br />
 <h2 class="text-center">Archivo  de Películas</h2>
-<button type="button" class="btn btn-white">🔍</button>
+<div class="input-group mb-3 d-flex">
+
+    @*<div class="mx-auto">*@
+        <input type="text" class="form-control" placeholder="Introduce los términos" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-primary btn-outline-secondary" onclick="localtion.href='@Url.Action("About","Home")'" type="button" id="button-addon2">
+            Buscar
+            </button>
+        </div>
+    @* </div>*@
+</div>
 
 <h3>Mejores Comedias</h3>
 <div id="sliderCards" class="sli1 border-top border-top-dark border-bottom border-bottom-dark text-center">

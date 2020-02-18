@@ -37,7 +37,7 @@
 
 </head>
 <body class="pt-0">
-    <div class="navbar navbar-expand-lg navbar-dark bg-dark barra"> <!--navbar-dark-->
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark barra "> <!--navbar-dark-->
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -52,11 +52,12 @@
                 <ul class="navbar-nav mr-auto">
                     @if (Request.IsAuthenticated)
                     {
-                        if (User.IsInRole("Usuario"))
+                        if (User.IsInRole("Usuario")) //ana@ana.com ana123
                         {
+                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                             <li>@Html.ActionLink("Contacto", "Contact", "Home", new { @class = "nav-item" })</li>
-                            <li>@Html.ActionLink("Mis Datos", "Edit", "MisDatos", new { @class = "nav-item" })</li>
-                            <li>@Html.ActionLink("Archivo", "ArchivoPelis", "PELICULAS", new { @class = "nav-item" })</li>
+                            <li>@Html.ActionLink("Mis Datos", "Edit", "MisDatos")</li>
+                            <li>@Html.ActionLink("Archivo", "ArchivoPelis", "PELICULAS")</li>
                         }
                         if (User.IsInRole("Administrador")) //admin@empresa.com  admin123
                         {
@@ -86,7 +87,7 @@
                             <li>@Html.ActionLink("Archivo", "ArchivoPelis", "PELICULAS")</li>
                         }
                     }
-                    else //Cualquiera
+                    else //No autentic
                     {
                         <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                         <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
