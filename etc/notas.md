@@ -1,10 +1,8 @@
 ## TODO
-* Crear Front mínimo Archivo.
-* Crear funcionalidad (filtrado, busqueda,etc) Para Archivo.
 * Cambiar nombres/ocultar titulos y contenido tablas 
-* Ajusta css boots layout y archivos. 
-
-
+* Ajusta css layout y archivos acabado PRO. 
+* Trabaja en View/Archivo (SACA DATOS VARIAS TABLAS misma VIEW)
+	* Add Models TABLAS RESTANTES! (n-m,etc)
 
 --------------
 
@@ -32,7 +30,6 @@ En lugar de tipo de dato DATA => DATATIME
 
 ------------------------
 
-
 ## CONSULTA PARA SACAR PELIS DE 1 GENERO
 select *
 from
@@ -43,4 +40,8 @@ from
 		PG.IDPeliFK = P.IDPelicula
 where
 	PG.IDGeneroFK = 2;
-##
+
+-----------------------
+
+## MODIFICACIONES EN BD
+)

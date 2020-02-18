@@ -32,12 +32,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.PuntMedia)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Premium)
-        </td>
+        </td>*@
     </tr>
 }
     </table>
@@ -56,6 +56,30 @@
             @Html.DisplayNameFor(model => model.Listas)
         </th>
     </tr>
+
+@foreach (var item in Model.Trabajadores) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDTrabajador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FecNac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pais)
+        </td>
+    </tr>
+}
+
     </table>
 <table class="table">
     <tr>
