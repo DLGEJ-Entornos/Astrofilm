@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dc83d31029c643efa2c20056a925b1e8" Name="Diagram1">
+        <EntityTypeShape EntityType="AstrofilmModel1.CRITICAS" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.FUNCIONES" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.GENEROS" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.LISTAS" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.PELICULAS" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.RESERVA" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.SALAS" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.TRABAJADORES" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.USUARIOS" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.COLABORADORES_LISTAS" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AstrofilmModel1.USUARIOS_AMIGOS" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <AssociationConnector Association="AstrofilmModel1.CriticaPeliFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.CriticaUserFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.FuncionPeliFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.FuncionSalaFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.ReservaFuncionFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.ListaListaFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.ListaPropietarioFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.ReservaUserFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.AmigoUsuarioFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.ColaboUsuarioFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.UsuarioUsuarioFK" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.LISTA_PELI" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.PELI_GENERO" ManuallyRouted="false" />
+        <AssociationConnector Association="AstrofilmModel1.PELI_TRABAJADOR" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

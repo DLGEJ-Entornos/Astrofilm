@@ -165,5 +165,15 @@ namespace Astrofilm.Controllers
             }
             base.Dispose(disposing);
         }
+
+       //public static void InnerJoinEx()
+       // {
+       //     var query = from peli in PELICULAS
+       //                 join trabajador in peli.TRABAJADORES 
+       // }
+       // public class MyViewModel
+       // {
+       //     public List<PELICULASController> 
+       // }
     }
 }

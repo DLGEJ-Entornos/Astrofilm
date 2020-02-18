@@ -24,7 +24,6 @@ namespace Astrofilm.Models
             this.GENEROS = new HashSet<GENEROS>();
             this.TRABAJADORES = new HashSet<TRABAJADORES>();
         }
-    
         [Display(Name = "ID")]
         public int IDPelicula { get; set; }
         public string Titulo { get; set; }
@@ -35,6 +34,8 @@ namespace Astrofilm.Models
         public decimal PuntMedia { get; set; }
         [Display(Name = "Portada")]
         public string Imagen { get; set; }
+
+
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CRITICAS> CRITICAS { get; set; }

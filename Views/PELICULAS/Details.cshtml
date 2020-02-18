@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Details";
 }
+<head>
+</head>
 
 <h2>Detalles</h2>
 
@@ -11,6 +13,13 @@
         <h4>PELICULAS</h4>
         <hr />
         <dl class="dl-horizontal">
+            <dt>
+                DIRECTOR
+            </dt>
+            <dd id="nomDirector">
+                @Html.DisplayFor(model => model.TRABAJADORES.ToArray()[0])
+            </dd>
+
             <dt>
                 @Html.DisplayNameFor(model => model.Titulo)
             </dt>
@@ -54,3 +63,17 @@
     @Html.ActionLink("Editar", "Edit", new { id = Model.IDPelicula }) |
     @Html.ActionLink("Volver al Inicio", "Index")
 </p>
+
+
+<script defer type="text/javascript">
+    var listaProps = document.getElementById('nomDirector').childNodes;
+    for (var i = 0; i < listaProps.length; i++) {
+
+        if (i == 3) { //salvar 3
+            console.log(listaProps[i].textContent);
+        } else {
+            listaProps[i].remove();
+        }
+    }
+    listaProps.forEach(item => item.remove());
+</script>
