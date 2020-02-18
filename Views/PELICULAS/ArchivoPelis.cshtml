@@ -66,9 +66,8 @@
                 @foreach (var itemDirector in item.TRABAJADORES)
                 {
                     <br />
-                    @Html.DisplayFor(modelItem => itemDirector.Nombre); 
+                    @Html.DisplayFor(modelItem => itemDirector.FullName); 
                     
-                    @Html.DisplayFor(modelItem => itemDirector.Apellido);
                 }
 
                 @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@

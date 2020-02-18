@@ -20,7 +20,14 @@ namespace Astrofilm.Models
         {
             this.PELICULAS = new HashSet<PELICULAS>();
         }
-    
+        public string FullName
+        {
+            get
+            {
+                return this.Nombre + " " + this.Apellido;
+            }
+        }
+
         [Display(Name = "ID")]
         public int IDTrabajador { get; set; }
         public int Tipo { get; set; }
