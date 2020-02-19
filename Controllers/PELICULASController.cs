@@ -14,11 +14,19 @@ namespace Astrofilm.Controllers
     public class PELICULASController : Controller
     {
         private AstrofilmEntities db = new AstrofilmEntities();
-
+        
         // GET: PELICULAS
         [Authorize(Roles = "Administrador")]
-        public ActionResult Index()
+        public ActionResult Index(string queryBusqueda)
         {
+            // Para buscar avisos por nombre de empleado en la lista de valores
+            var peli = db.PELICULAS.Include(a => a.IDPelicula).Include(a => a.Titulo);
+            if (!String.IsNullOrEmpty(queryBusqueda))
+            {
+                //db.PELICULAS = db.PELICULAS.Where(s => s.db.PELICULAS.Nombre.Contains(queryBusqueda));
+                peli = peli.Where(s => s.Titulo.Contains(queryBusqueda));
+            }
+
             return View(db.PELICULAS.ToList());
         }
 
@@ -28,86 +36,93 @@ namespace Astrofilm.Controllers
             return View(db.PELICULAS.ToList());
         }
 
-    // GET: PELICULAS/Details/5
-    [Authorize(Roles = "Administrador")]
-    public ActionResult Details(int? id)
-    {
-        if (id == null)
+        // GET: PELICULAS/Details/5
+        [Authorize(Roles = "Administrador")]
+        public ActionResult Details(int? id)
         {
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
-        PELICULAS pELICULAS = db.PELICULAS.Find(id);
-        if (pELICULAS == null)
-        {
-            return HttpNotFound();
-        }
-        return View(pELICULAS);
-    }
-
-    // GET: PELICULAS/Create
-    [Authorize(Roles = "Administrador")]
-    public ActionResult Create()
-    {
-        return View();
-    }
-
-    // POST: PELICULAS/Create
-    // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-    // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
-    [Authorize(Roles = "Administrador")]
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Create([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Imagen")] PELICULAS pELICULAS, HttpPostedFileBase Imagen)
-    {
-        if (ModelState.IsValid)
-        {
-            db.PELICULAS.Add(pELICULAS);
-            db.SaveChanges();
-            pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
-            db.Entry(pELICULAS).State = EntityState.Modified;
-            db.SaveChanges();
-            Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
-            return RedirectToAction("Index");
-        }
-        return View(pELICULAS);
-    }
-
-    // GET: PELICULAS/Edit/5
-    [Authorize(Roles = "Administrador")]
-    public ActionResult Edit(int? id)
-    {
-        if (id == null)
-        {
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
-        PELICULAS pELICULAS = db.PELICULAS.Find(id);
-        if (pELICULAS == null)
-        {
-            return HttpNotFound();
-        }
-        return View(pELICULAS);
-    }
-
-    // POST: PELICULAS/Edit/5
-    // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-    // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Edit([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Email,Premium")] PELICULAS pELICULAS, HttpPostedFileBase Imagen)
-    {
-        if (ModelState.IsValid)
-        {
-            db.Entry(pELICULAS).State = EntityState.Modified;
-            db.SaveChanges();
-
-            if (Imagen != null) //No guardamos la imagen del input que es null por no selecionar (QUIERO LA QUE YA TENIA PUESTA)
+            if (id == null)
             {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PELICULAS pELICULAS = db.PELICULAS.Find(id);
+            if (pELICULAS == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pELICULAS);
+        }
+
+        // GET: PELICULAS/Create
+        [Authorize(Roles = "Administrador")]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: PELICULAS/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrador")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Imagen")] PELICULAS pELICULAS, HttpPostedFileBase Imagen)
+        {
+            if (ModelState.IsValid)
+            {
+                db.PELICULAS.Add(pELICULAS);
+                db.SaveChanges();
                 pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
                 db.Entry(pELICULAS).State = EntityState.Modified;
                 db.SaveChanges();
                 Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View(pELICULAS);
+        }
+
+        // GET: PELICULAS/Edit/5
+        [Authorize(Roles = "Administrador")]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PELICULAS pELICULAS = db.PELICULAS.Find(id);
+            Session["nombreImagenAnterior"] = pELICULAS.Imagen;
+            if (pELICULAS == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pELICULAS);
+        }
+
+        // POST: PELICULAS/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "IDPelicula,Titulo,Año,PuntMedia,Email,Premium,Imagen")] PELICULAS pELICULAS, HttpPostedFileBase Imagen)
+        {
+            if (ModelState.IsValid)
+            {
+                if(Imagen == null)
+                {
+                    // Cojo la imagen anterior
+                    //PELICULAS peliAntes = db.PELICULAS.Find(pELICULAS.IDPelicula);
+                    pELICULAS.Imagen = (string)Session["nombreImagenAnterior"];// "5.jpg";//peliAntes.Imagen;
+                    Session["nombreImagenAnterior"] = null;
+                }
+                else
+                {
+                    pELICULAS.Imagen = pELICULAS.IDPelicula + Path.GetExtension(Imagen.FileName);
+                    Imagen.SaveAs(Server.MapPath("~/Content/Images/Peliculas/" + pELICULAS.Imagen));
+                }
+
+                db.Entry(pELICULAS).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
             }
             return View(pELICULAS);
         }
@@ -154,7 +169,7 @@ namespace Astrofilm.Controllers
                 db.PELICULAS.Remove(pELICULAS);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            } 
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -166,14 +181,14 @@ namespace Astrofilm.Controllers
             base.Dispose(disposing);
         }
 
-       //public static void InnerJoinEx()
-       // {
-       //     var query = from peli in PELICULAS
-       //                 join trabajador in peli.TRABAJADORES 
-       // }
-       // public class MyViewModel
-       // {
-       //     public List<PELICULASController> 
-       // }
+        //public static void InnerJoinEx()
+        // {
+        //     var query = from peli in PELICULAS
+        //                 join trabajador in peli.TRABAJADORES 
+        // }
+        // public class MyViewModel
+        // {
+        //     public List<PELICULASController> 
+        // }
     }
 }

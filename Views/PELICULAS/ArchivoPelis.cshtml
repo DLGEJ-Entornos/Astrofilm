@@ -43,10 +43,12 @@
             width: 15em;
             box-shadow: 4px 4px black;
         }
-        h3{
+
+        h3 {
             color: cornflowerblue;
         }
-        #button-addon2{
+
+        #button-addon2 {
             color: white;
         }
     </style>
@@ -58,17 +60,22 @@
 <br />
 <br />
 <h2 class="text-center">Archivo  de Películas</h2>
-<div class="input-group mb-3 d-flex">
 
-    @*<div class="mx-auto">*@
+@using (Html.BeginForm("ArchivoPelis", "PELICULAS", FormMethod.Get))
+{
+
+    <div class="input-group mb-3 d-flex">
+
+        @*<div class="mx-auto">*@
         <input type="text" class="form-control" placeholder="Introduce los términos" aria-label="Recipient's username" aria-describedby="button-addon2">
         <div class="input-group-append">
-            <button class="btn btn-primary btn-outline-secondary" onclick="localtion.href='@Url.Action("About","Home")'" type="button" id="button-addon2">
-            Buscar
+            <button class="btn btn-primary btn-outline-secondary" onclick="localtion.href='@Url.Action("About", "Home")'" type="submit" id="button-addon2">
+                Buscar
             </button>
         </div>
-    @* </div>*@
-</div>
+        @* </div>*@
+    </div>
+}
 
 <h3>Mejores Comedias</h3>
 <div id="sliderCards" class="sli1 border-top border-top-dark border-bottom border-bottom-dark text-center">
@@ -102,7 +109,9 @@
     }
 </div>
 
-<br /><br /><br />
+<br />
+<br />
+<br />
 
 <h3>Mejores Dramas</h3>
 <div id="sliderCards" class="sli1 border-top border-top-dark border-bottom border-bottom-dark text-center">
@@ -136,7 +145,9 @@
     }
 </div>
 
-<br /><br /><br />
+<br />
+<br />
+<br />
 <h3>Westerns destacados</h3>
 <div id="sliderCards" class="sli1 border-top border-top-dark border-bottom border-bottom-dark text-center">
     @foreach (var item in Model) //CARTAS ELEMENTOS INDIVIDUALES
@@ -168,7 +179,9 @@
 
     }
 </div>
-<br /><br /><br />
+<br />
+<br />
+<br />
 
 <h3>LISTA - Mejores del Mes</h3>
 <div id="sliderCards" class="sli1 border-top border-top-dark border-bottom border-bottom-dark text-center">
@@ -176,7 +189,7 @@
     {
         foreach (var itemList in item.LISTAS)
         {
-            if (itemList.IDLista== 1)
+            if (itemList.IDLista == 1)
             {
                 <div class="card table-bordered border border-secondary m-1 d-inline-block">
                     <div class="card-body">

@@ -20,11 +20,12 @@
         <th>
             @Html.DisplayNameFor(model => model.NElementos)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.COLABORADORES_LISTAS.IDListaFK)
-        </th>
+        </th*@>
         <th>
-            @Html.DisplayNameFor(model => model.USUARIOS.Apellidos)
+            Propietarios
+            @*@Html.DisplayNameFor(model => model.USUARIOS.Apellidos)*@
         </th>
         <th></th>
     </tr>
@@ -40,9 +41,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.NElementos)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.COLABORADORES_LISTAS.IDListaFK)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos) @*CAMBIAR A 'Propietario'*@
         </td>

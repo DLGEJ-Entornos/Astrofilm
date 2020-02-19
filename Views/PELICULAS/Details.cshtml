@@ -17,13 +17,17 @@
                 DIRECTOR
             </dt>
             <dd id="nomDirector">
-                @Html.DisplayFor(model => model.TRABAJADORES.ToArray()[0])
+                @foreach (var item in Model.TRABAJADORES)
+                {
+                    @Html.DisplayFor(modelItem => item.FullName)
+                }
+
             </dd>
 
             <dt>
                 @Html.DisplayNameFor(model => model.Titulo)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Titulo)
             </dd>
@@ -31,6 +35,7 @@
             <dt>
                 @Html.DisplayNameFor(model => model.Año)
             </dt>
+            </dd>
 
             <dd>
                 @Html.DisplayFor(model => model.Año)
@@ -40,40 +45,23 @@
                 @Html.DisplayNameFor(model => model.PuntMedia)
             </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.PuntMedia)
-            </dd>
-
             @*<dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
+                    @Html.DisplayNameFor(model => model.Imagen)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Imagen)
-            <img src="~/Content/Images/Peliculas/@Html.DisplayFor(item => item.Imagen)" style="width:600px"/>
-        </dd>*@
+                <dd>
+                    @Html.DisplayFor(model => model.Imagen)
+                    <img src="~/Content/Images/Peliculas/@Html.DisplayFor(item => item.Imagen)" style="width:600px"/>
+                </dd>*@
         </dl>
     </main>
     <aside class="float-right">
         @*<h2>@Html.DisplayFor(model => model.Imagen)</h2>*@
         <img src="~/Content/Images/Peliculas/@Html.DisplayFor(item => item.Imagen)" style="width:400px;" />
     </aside>
-</div> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />  
+</div>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.IDPelicula }) |
     @Html.ActionLink("Volver al Inicio", "Index")
 </p>
-
-
-<script defer type="text/javascript">
-    var listaProps = document.getElementById('nomDirector').childNodes;
-    for (var i = 0; i < listaProps.length; i++) {
-
-        if (i == 3) { //salvar 3
-            console.log(listaProps[i].textContent);
-        } else {
-            listaProps[i].remove();
-        }
-    }
-    listaProps.forEach(item => item.remove());
-</script>

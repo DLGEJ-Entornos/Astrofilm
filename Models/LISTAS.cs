@@ -34,5 +34,6 @@ namespace Astrofilm.Models
         public virtual USUARIOS USUARIOS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PELICULAS> PELICULAS { get; set; }
+
     }
 }
