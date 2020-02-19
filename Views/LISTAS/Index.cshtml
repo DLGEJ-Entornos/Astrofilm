@@ -44,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.COLABORADORES_LISTAS.IDListaFK)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos)
+            @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos) @*CAMBIAR A 'Propietario'*@
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.IDLista }) |

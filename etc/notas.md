@@ -1,7 +1,9 @@
 ## TODO
 * Cambiar nombres/ocultar titulos y contenido tablas 
 * Ajusta css layout y archivos acabado PRO. 
-* Ajusta permisos etc en Editar MisDatos para Usuario y Admin
+* Corrige users duplicados en Index Usuarios al añadir amigos
+* Hacer nºelementos en lista
+* Index LISTAS cambiar Apellidos por Propietario
 --------------
 
 A la tabla FUNCIONES añadirle el campo agregado plazas disponibles. (calc de tabla reserva y salas)

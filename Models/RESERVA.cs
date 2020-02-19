@@ -11,14 +11,21 @@ namespace Astrofilm.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class RESERVA
     {
+        [Display(Name = "ID")]
         public int IDReserva { get; set; }
+        [Display(Name = "Fecha de Reserva")]
         public System.DateTime FecReserva { get; set; }
+        [Display(Name = "Butaca")]
         public int NumButaca { get; set; }
+        [Display(Name = "ID Usuario")]
         public int IDUserFK { get; set; }
+        [Display(Name = "ID Función")]
         public int IDFuncionFK { get; set; }
+        [Display(Name = "Precio")]
         public decimal PrecioNeto { get; set; }
     
         public virtual FUNCIONES FUNCIONES { get; set; }

@@ -11,10 +11,12 @@ namespace Astrofilm.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class COLABORADORES_LISTAS
     {
         public Nullable<int> IDUserFK { get; set; }
+        [Display(Name = "ID")]
         public int IDListaFK { get; set; }
     
         public virtual LISTAS LISTAS { get; set; }
