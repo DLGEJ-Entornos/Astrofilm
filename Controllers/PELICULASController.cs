@@ -19,8 +19,7 @@ namespace Astrofilm.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
-            var pELICULAS = db.PELICULAS.Include(l => l.IDPelicula);
-            return View(pELICULAS.ToList());
+            return View(db.PELICULAS.ToList());
         }
 
         // GET: VISTA DEL ARCHIVO DE PELICULAS
@@ -28,10 +27,12 @@ namespace Astrofilm.Controllers
         {
 
             // Para buscar avisos por nombre de empleado en la lista de valores
-            var peli = db.PELICULAS.Include(a=>a.FUNCIONES);
+            //var peli = db.PELICULAS.Include(a => a.LISTAS.Select(b => b.Titulo)).Include(a => a.TRABAJADORES.Select(c => c.FullName));
+            var peli = db.PELICULAS.Include(a => a.LISTAS);
             if (!String.IsNullOrEmpty(queryBusqueda))
             {
-                peli = peli.Where(s => s.Titulo.Contains(queryBusqueda));
+                peli = peli.Where(s => s.Titulo.Contains(queryBusqueda) || s.Año.ToString().Contains(queryBusqueda));
+                //peli = peli.Where(s => s.LISTAS..Contains(queryBusqueda));
             }
 
             return View(peli.ToList());
