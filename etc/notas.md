@@ -1,9 +1,9 @@
 ## TODO
 * Cambiar nombres/ocultar titulos y contenido tablas 
 * Ajusta css layout y archivos acabado PRO. 
-* Corrige users duplicados en Index Usuarios al añadir amigos
-* Haz buscador 
 * Haz reserva funcion 
+* Hacer usuarios ADmin reales, enviar a bd ROles
+* Mostrar todas las peliculas en el Archivo
 --------------
 
 A la tabla FUNCIONES añadirle el campo agregado plazas disponibles. (calc de tabla reserva y salas)
