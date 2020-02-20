@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Astrofilm.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Astrofilm.Controllers
 {
@@ -39,11 +40,19 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Create
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
+            if (User.IsInRole("Usuario"))
+            {
+                var emailUsuario = User.Identity.GetUserName();
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS.Where(u => u.Email == emailUsuario), "IdUsuario", "Nombre");
+            }
+            else
+            {
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos");
+            }
             ViewBag.IDFuncionFK = new SelectList(db.FUNCIONES, "IDFuncion", "IDFuncion");
-            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos");
             return View();
         }
 
@@ -54,6 +63,13 @@ namespace Astrofilm.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDReserva,FecReserva,NumButaca,IDUserFK,IDFuncionFK,PrecioNeto")] RESERVA rESERVA)
         {
+            
+            FUNCIONES func = db.FUNCIONES.Find(rESERVA.IDFuncionFK);
+
+            func.Disponibles = (func.Disponibles - 1);
+            db.Entry(func).State = EntityState.Modified;
+            db.SaveChanges();
+            
             if (ModelState.IsValid)
             {
                 db.RESERVA.Add(rESERVA);
