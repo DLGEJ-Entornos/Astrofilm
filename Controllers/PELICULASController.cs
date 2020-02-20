@@ -17,23 +17,26 @@ namespace Astrofilm.Controllers
         
         // GET: PELICULAS
         [Authorize(Roles = "Administrador")]
-        public ActionResult Index(string queryBusqueda)
+        public ActionResult Index()
         {
-            // Para buscar avisos por nombre de empleado en la lista de valores
-            var peli = db.PELICULAS.Include(a => a.IDPelicula).Include(a => a.Titulo);
-            if (!String.IsNullOrEmpty(queryBusqueda))
-            {
-                //db.PELICULAS = db.PELICULAS.Where(s => s.db.PELICULAS.Nombre.Contains(queryBusqueda));
-                peli = peli.Where(s => s.Titulo.Contains(queryBusqueda));
-            }
-
-            return View(db.PELICULAS.ToList());
+            var pELICULAS = db.PELICULAS.Include(l => l.IDPelicula);
+            return View(pELICULAS.ToList());
         }
 
         // GET: VISTA DEL ARCHIVO DE PELICULAS
-        public ActionResult ArchivoPelis()
+        public ActionResult ArchivoPelis(string queryBusqueda)
         {
-            return View(db.PELICULAS.ToList());
+
+            // Para buscar avisos por nombre de empleado en la lista de valores
+            var peli = db.PELICULAS.Include(a=>a.FUNCIONES);
+            if (!String.IsNullOrEmpty(queryBusqueda))
+            {
+                peli = peli.Where(s => s.Titulo.Contains(queryBusqueda));
+            }
+
+            return View(peli.ToList());
+
+            //return View(db.PELICULAS.ToList());
         }
 
         // GET: PELICULAS/Details/5
