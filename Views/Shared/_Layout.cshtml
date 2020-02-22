@@ -58,9 +58,29 @@
                             <li>@Html.ActionLink("Contacto", "Contact", "Home", new { @class = "nav-item" })</li>
                             <li>@Html.ActionLink("Mis Datos", "Edit", "MisDatos")</li>
                             <li>@Html.ActionLink("Archivo", "ArchivoPelis", "PELICULAS")</li>
+
+                            //DROPDOWN BOOTSRAP con las opciones de usuario 
+                            <div id="controlesUser" class="dropdown">
+                                <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Gestión 
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li>@Html.ActionLink("Reservas", "Index", "RESERVAs")</li>
+                                    <li>@Html.ActionLink("Listas", "Index", "LISTAS")</li>
+                                    <li>@Html.ActionLink("Críticas", "Index", "CRITICAS")</li>
+                                </ul>
+                            </div>
+                            //
                         }
                         if (User.IsInRole("Administrador")) //admin@empresa.com  admin123
                         {
+                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                            <li>@*@Html.ActionLink("Mis Datos", "Edit", "MisDatos")*@</li>
+                            <li>@Html.ActionLink("Archivo", "ArchivoPelis", "PELICULAS")</li>
+
                             //DROPDOWN BOOTSRAP con las opciones de administracion
                             <div id="controlesAdmin" class="dropdown">
                                 <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -81,10 +101,6 @@
                                 </ul>
                             </div>
                             //
-                            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Archivo", "ArchivoPelis", "PELICULAS")</li>
                         }
                     }
                     else //No autentic

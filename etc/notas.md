@@ -4,6 +4,8 @@
 * Haz reserva funcion 
 * Hacer usuarios ADmin reales, enviar a bd ROles
 * Mostrar todas las peliculas en el Archivo
+* Permitir a cualquiera details pelis
+* Puntuacion media en detalles?
 --------------
 
 A la tabla FUNCIONES añadirle el campo agregado plazas disponibles. (calc de tabla reserva y salas)

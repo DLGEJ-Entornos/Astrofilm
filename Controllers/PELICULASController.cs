@@ -41,7 +41,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: PELICULAS/Details/5
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
