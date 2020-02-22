@@ -3,14 +3,13 @@
 @{
     ViewBag.Title = "Create";
 }
-
 <h2>Crear</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>RESERVA</h4>
         <hr />
@@ -35,17 +34,28 @@
 
         @if (User.IsInRole("Administrador"))
         {
-        <div class="form-group">
-            @Html.LabelFor(model => model.IDUserFK, "IDUserFK", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IDUserFK", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IDUserFK, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.IDUserFK, "IDUserFK", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IDUserFK", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IDUserFK, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-        }      
+        }
+        else
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.IDUserFK, "IDUserFK", htmlAttributes: new { @class = "control-label col-md-2 d-none" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IDUserFK", null, htmlAttributes: new { @class = "form-control d-none" })
+                    @Html.ValidationMessageFor(model => model.IDUserFK, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        }
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IDFuncionFK, "IDFuncionFK", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IDFuncionFK, "ID Función", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IDFuncionFK", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IDFuncionFK, "", new { @class = "text-danger" })
@@ -55,7 +65,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PrecioNeto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PrecioNeto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PrecioNeto, new { htmlAttributes = new { @class = "form-control bg-light precioNeto" } })
                 @Html.ValidationMessageFor(model => model.PrecioNeto, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -74,4 +84,8 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $('.precioNeto').val('8');
+        $('.precioNeto').attr('readonly', true);
+    </script>
 }

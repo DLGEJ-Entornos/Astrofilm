@@ -10,12 +10,12 @@ using Astrofilm.Models;
 
 namespace Astrofilm.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class USUARIOSController : Controller
     {
         private AstrofilmEntities db = new AstrofilmEntities();
 
         // GET: USUARIOS
-        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var uSUARIOS = db.USUARIOS.Include(u => u.USUARIOS_AMIGOS);
@@ -23,7 +23,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: USUARIOS/Details/5
-        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,7 +38,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: USUARIOS/Create
-        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             ViewBag.IDUsuario = new SelectList(db.USUARIOS_AMIGOS, "IDAmigoFK", "IDAmigoFK");
@@ -65,7 +63,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: USUARIOS/Edit/5
-        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -99,10 +96,8 @@ namespace Astrofilm.Controllers
         }
 
         // GET: USUARIOS/Delete/5
-        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
-        {
-            if (id == null)
+        { if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

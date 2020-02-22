@@ -27,8 +27,8 @@ namespace Astrofilm.Controllers
             {
                 var emailUsuario = User.Identity.GetUserName();
                 ViewBag.emailUser = emailUsuario;
-                var userLog = rUsers.Where(r => r.Email == emailUsuario);
-                ViewBag.IDUsersFK = db.USUARIOS.Where(u => u.Email == emailUsuario);
+                //var userLog = rUsers.Where(r => r.Email == emailUsuario);
+                //ViewBag.IDUsersFK = db.USUARIOS.Where(u => u.Email == emailUsuario);
                 //rESERVA.Where(r => r.IDUserFK);
                 return View(rESERVA.ToList());
             }

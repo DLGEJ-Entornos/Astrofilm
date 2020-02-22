@@ -70,13 +70,15 @@
     <div class="input-group mb-3 d-flex">
 
         @*<div class="mx-auto">*@
-        <input type="text" name="queryBusqueda" class="form-control" placeholder="Introduce los términos" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <input type="text" id="query" name="queryBusqueda" class="form-control" placeholder="Título o Año" aria-label="Recipient's username" aria-describedby="button-addon2">
         <div class="input-group-append">
             <button class="btn btn-primary btn-outline-secondary" type="submit" id="button-addon2">
                 Buscar
             </button>
         </div>
         @* </div>*@
+        <button type="button" id="btnLimpiar" class="btn btn-secondary ml-4" style="font-size:0.7em;">Limpiar</button>
+
     </div>
 }
 
@@ -269,7 +271,13 @@
 
     }
 </div>
-<script type="text/javascript">
-
-
-</script>
+@section Scripts {
+    <script type="text/javascript">
+        //debugger;
+        $('#btnLimpiar').click(limpiar);
+        function limpiar() {
+            $('#query').val('');
+            $('#button-addon2').trigger('click');
+        }
+    </script>
+}

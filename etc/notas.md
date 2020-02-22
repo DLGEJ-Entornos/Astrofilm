@@ -1,11 +1,7 @@
 ## TODO
 * Cambiar nombres/ocultar titulos y contenido tablas 
 * Ajusta css layout y archivos acabado PRO. 
-* Haz reserva funcion 
 * Hacer usuarios ADmin reales, enviar a bd ROles
-* Mostrar todas las peliculas en el Archivo
-* Permitir a cualquiera details pelis
-* Puntuacion media en detalles?
 --------------
 
 A la tabla FUNCIONES añadirle el campo agregado plazas disponibles. (calc de tabla reserva y salas)
@@ -47,3 +43,10 @@ where
 
 ## MODIFICACIONES EN BD
 )
+
+
+## CREDENCIALES:
+admin@empresa.com admin123
+pepe@gmail.com pepe123
+
+//Usuario: ana@ana.com ana123

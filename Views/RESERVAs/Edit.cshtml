@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>RESERVA</h4>
         <hr />
@@ -54,7 +54,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PrecioNeto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PrecioNeto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PrecioNeto, new { htmlAttributes = new { @class = "form-control precioNeto" } })
                 @Html.ValidationMessageFor(model => model.PrecioNeto, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -73,4 +73,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    @if (User.IsInRole("Usuario"))
+    {
+        <script type="text/javascript">
+            $('.precioNeto').val('8');
+            $('.precioNeto').attr('readonly', true);
+        </script>
+    }
 }
