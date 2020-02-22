@@ -7,23 +7,29 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Astrofilm.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Astrofilm.Controllers
 {
+    [Authorize(Roles = "Administrador,Usuario")]
     public class LISTASController : Controller
     {
         private AstrofilmEntities db = new AstrofilmEntities();
 
         // GET: LISTAS
-        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var lISTAS = db.LISTAS.Include(l => l.COLABORADORES_LISTAS).Include(l => l.USUARIOS);
+
+            if (User.IsInRole("Usuario"))
+            {
+                var emailUsuario = User.Identity.GetUserName();
+                ViewBag.emailUser = emailUsuario;
+            }
             return View(lISTAS.ToList());
         }
 
         // GET: LISTAS/Details/5
-        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,7 +45,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: LISTAS/Create
-        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             ViewBag.IDLista = new SelectList(db.COLABORADORES_LISTAS, "IDListaFK", "IDListaFK");
@@ -67,7 +72,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: LISTAS/Edit/5
-        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -103,7 +107,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: LISTAS/Delete/5
-        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

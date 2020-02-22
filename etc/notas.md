@@ -1,7 +1,12 @@
 ## TODO
 * Cambiar nombres/ocultar titulos y contenido tablas 
 * Ajusta css layout y archivos acabado PRO. 
-* Hacer usuarios ADmin reales, enviar a bd ROles
+~~~~~~* Hacer usuarios ADmin reales, enviar a bd ROles
+* Trabajadores 0 = Director
+* Create y display criticas Usuario solo ve las suyas
+* Mismo para listas
+	* (Usuario) Add peli a lista
+	* N elementos dinamico
 --------------
 
 A la tabla FUNCIONES añadirle el campo agregado plazas disponibles. (calc de tabla reserva y salas)

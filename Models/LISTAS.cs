@@ -20,6 +20,18 @@ namespace Astrofilm.Models
         {
             this.PELICULAS = new HashSet<PELICULAS>();
         }
+        public int TotPelis()
+        {
+            int total = 0;
+            foreach (var peli in PELICULAS)
+            {
+                if (peli.IDPelicula == IDLista)
+                {
+                    total++;
+                }
+            }
+            return total;
+        }
     
         [Display(Name = "ID")]
         public int IDLista { get; set; }

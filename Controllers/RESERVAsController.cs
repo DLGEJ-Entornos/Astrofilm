@@ -17,7 +17,6 @@ namespace Astrofilm.Controllers
         private AstrofilmEntities db = new AstrofilmEntities();
 
         // GET: RESERVAs
-        //[Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var rESERVA = db.RESERVA.Include(r => r.FUNCIONES).Include(r => r.USUARIOS);
@@ -40,7 +39,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Details/5
-        //[Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -56,7 +54,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Create
-        //[Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             if (User.IsInRole("Usuario"))
@@ -99,7 +96,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Edit/5
-        //[Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -111,10 +107,20 @@ namespace Astrofilm.Controllers
             {
                 return HttpNotFound();
             }
+
+            if (User.IsInRole("Usuario"))
+            {
+                var emailUsuario = User.Identity.GetUserName();
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS.Where(u => u.Email == emailUsuario), "IdUsuario", "Nombre",rESERVA.IDUserFK);
+            }
+            else
+            {
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", rESERVA.IDUserFK);
+            }
             ViewBag.IDFuncionFK = new SelectList(db.FUNCIONES, "IDFuncion", "IDFuncion", rESERVA.IDFuncionFK);
-            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", rESERVA.IDUserFK);
             return View(rESERVA);
         }
+
 
         // POST: RESERVAs/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
@@ -135,7 +141,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Delete/5
-        //[Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

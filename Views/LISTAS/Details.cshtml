@@ -13,7 +13,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Titulo)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Titulo)
         </dd>
@@ -21,7 +20,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Publica)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Publica)
         </dd>
@@ -29,25 +27,36 @@
         <dt>
             @Html.DisplayNameFor(model => model.NElementos)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.PELICULAS.Count)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.COLABORADORES_LISTAS.IDListaFK)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.COLABORADORES_LISTAS.IDListaFK)
-        </dd>
+        </dd>*@
 
         <dt>
-            @Html.DisplayNameFor(model => model.USUARIOS.Apellidos)
+            Autor
+            @*@Html.DisplayNameFor(model => model.USUARIOS.Apellidos)*@
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.USUARIOS.Apellidos)
+        </dd>
+
+        <dt>
+            Películas
+        </dt>
+        <dd>
+@*            @Html.DisplayFor(model => model.PELICULAS.Count)*@
+            @foreach (var peli in Model.PELICULAS)
+            {
+                @peli.Titulo; <br />
+            }
         </dd>
 
     </dl>

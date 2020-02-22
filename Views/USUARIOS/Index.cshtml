@@ -32,9 +32,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Premium)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.USUARIOS_AMIGOS.IDAmigoFK)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -58,9 +58,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Premium)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.USUARIOS_AMIGOS.IDAmigoFK)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.IDUsuario }) |
             @Html.ActionLink("Detalles", "Details", new { id=item.IDUsuario }) |

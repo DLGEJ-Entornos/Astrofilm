@@ -9,6 +9,7 @@
 <p class="btn btn-default btn-outline-primary">
     @Html.ActionLink("Crear Nuevo", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -21,8 +22,8 @@
             @Html.DisplayNameFor(model => model.NElementos)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.COLABORADORES_LISTAS.IDListaFK)
-        </th*@>
+                @Html.DisplayNameFor(model => model.COLABORADORES_LISTAS.IDListaFK)
+            </th>*@
         <th>
             Propietarios
             @*@Html.DisplayNameFor(model => model.USUARIOS.Apellidos)*@
@@ -30,29 +31,67 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Publica)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NElementos)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.COLABORADORES_LISTAS.IDListaFK)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos) @*CAMBIAR A 'Propietario'*@
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IDLista }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.IDLista }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.IDLista })
-        </td>
-    </tr>
-}
+    @if (User.IsInRole("Administrador"))
+    {
+        foreach (var item in Model)
+        {
+            int total = 0;
+            foreach (var peli in item.PELICULAS)
+            {
+                total++;
+            }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publica)
+                </td>
+                <td>
+                    @total
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos) @*CAMBIAR A 'Propietario'*@
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IDLista }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IDLista }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IDLista })
+                </td>
+            </tr>
+        }
+
+    }
+    else // usuario
+    {
+        var mailUser = ViewBag.emailUser;
+        foreach (var item in Model.Where(a => a.USUARIOS.Email == mailUser))
+        {
+            int total = 0;
+            foreach (var peli in item.PELICULAS)
+            {
+                total++;
+            }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publica)
+                </td>
+                <td>
+                    @total
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos) @*CAMBIAR A 'Propietario'*@
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IDLista }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IDLista }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IDLista })
+                </td>
+            </tr>
+        }
+    }
 
 </table>
