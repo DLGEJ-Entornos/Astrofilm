@@ -32,7 +32,11 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Tipo)
+            @if (item.Tipo == 0)
+            {
+                <p>Director</p>
+            }
+            @*@Html.DisplayFor(modelItem => item.Tipo)*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Apellido)

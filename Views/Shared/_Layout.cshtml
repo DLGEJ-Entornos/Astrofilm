@@ -10,42 +10,54 @@
     @* Añadido para Datapicker de JQueryUIHelpers.Mvc5 *@
     @Styles.Render("~/Content/themes/base/css")
     <style>
-        .navbar-header img{
-            width:6em;
-            height:6em;
-            margin-right:3em;
+        .navbar-header img {
+            width: 6em;
+            height: 6em;
+            margin-right: 3em;
         }
-        .custom{
-            font-weight:bold;
-            font-family:Candara;
-            font-size:xx-large;
+
+        .custom {
+            font-weight: bold;
+            font-family: Candara;
+            font-size: xx-large;
         }
-        navbar-brand{
+
+        navbar-brand {
             color: red;
             font-size: 5em;
             font-family: 'Righteous', cursive;
         }
-        li{
+
+        li {
             padding-right: 1.3em;
             padding-left: 1.3em;
-            font-size: 1.2em; 
+            font-size: 1.2em;
         }
-        barra{
-            background-color:seagreen;
+        
+        barra {
+            background-color: seagreen;
+        }
+
+        a[href='#top']{
+            font-size:x-large;
+            position: fixed;
+            top: 30em;
+            right: 2em;
         }
     </style>
 
 </head>
 <body class="pt-0">
-    <div class="navbar navbar-expand-lg navbar-dark bg-dark barra "> <!--navbar-dark-->
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark barra ">
+        <!--navbar-dark-->
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
                     @*<span class="navbar-toggler-icon"></span>
-                    <span class="navbar-toggler-icon"></span>*@
+                        <span class="navbar-toggler-icon"></span>*@
                 </button>
-                <img src="~/Content/propios/logo-Astrofilm.png" alt="logoAstrofilm"/>
+                <img src="~/Content/propios/logo-Astrofilm.png" alt="logoAstrofilm" />
                 @Html.ActionLink("ASTROFILM", "Index", "Home", new { area = "" }, new { @class = "navbar-brand custom" })
             </div>
             <div class="navbar-collapse collapse">
@@ -59,10 +71,10 @@
                             <li>@Html.ActionLink("Mis Datos", "Edit", "MisDatos")</li>
                             <li>@Html.ActionLink("Archivo", "ArchivoPelis", "PELICULAS")</li>
 
-                            //DROPDOWN BOOTSRAP con las opciones de usuario 
+                            //DROPDOWN BOOTSRAP con las opciones de usuario
                             <div id="controlesUser" class="dropdown">
                                 <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Gestión 
+                                    Gestión
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -84,7 +96,7 @@
                             //DROPDOWN BOOTSRAP con las opciones de administracion
                             <div id="controlesAdmin" class="dropdown">
                                 <button class="btn btn-default dropdown-toggle text-white" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                   Administración 
+                                    Administración
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -117,6 +129,8 @@
     </div>
     <div class="container body-content">
         @RenderBody()
+        <a href="#top">🡹</a>
+        
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
@@ -130,5 +144,13 @@
     @Scripts.Render("~/bundles/jqueryui")
 
     @RenderSection("scripts", required: false)
+    @section Scripts{
+        <script>
+            $("a[href='#top']").click(function () {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+            });
+        </script>
+    }
 </body>
 </html>

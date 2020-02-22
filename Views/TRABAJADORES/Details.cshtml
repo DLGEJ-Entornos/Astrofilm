@@ -15,7 +15,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tipo)
+            @if (Model.Tipo == 0)
+            {
+                <p>Director</p>
+            }
+            @*@Html.DisplayFor(model => model.Tipo)*@
         </dd>
 
         <dt>

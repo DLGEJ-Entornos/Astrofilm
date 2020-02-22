@@ -7,6 +7,7 @@
 * Mismo para listas
 	* (Usuario) Add peli a lista
 	* N elementos dinamico
+* Edit Create Criticas para Usuarios limitar
 --------------
 
 A la tabla FUNCIONES añadirle el campo agregado plazas disponibles. (calc de tabla reserva y salas)

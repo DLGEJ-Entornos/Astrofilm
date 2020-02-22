@@ -7,23 +7,28 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Astrofilm.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Astrofilm.Controllers
 {
+    [Authorize(Roles = "Administrador,Usuario")]
     public class CRITICASController : Controller
     {
         private AstrofilmEntities db = new AstrofilmEntities();
 
         // GET: CRITICAS
-        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var cRITICAS = db.CRITICAS.Include(c => c.PELICULAS).Include(c => c.USUARIOS);
+            if (User.IsInRole("Usuario"))
+            {
+                var emailUsuario = User.Identity.GetUserName();
+                ViewBag.emailUser = emailUsuario;
+            }
             return View(cRITICAS.ToList());
         }
 
         // GET: CRITICAS/Details/5
-        [Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,7 +44,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: CRITICAS/Create
-        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             ViewBag.IDPeliFK = new SelectList(db.PELICULAS, "IDPelicula", "Titulo");
@@ -67,7 +71,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: CRITICAS/Edit/5
-        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -103,7 +106,6 @@ namespace Astrofilm.Controllers
         }
 
         // GET: CRITICAS/Delete/5
-        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

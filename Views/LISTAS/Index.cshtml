@@ -35,11 +35,6 @@
     {
         foreach (var item in Model)
         {
-            int total = 0;
-            foreach (var peli in item.PELICULAS)
-            {
-                total++;
-            }
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Titulo)
@@ -48,7 +43,7 @@
                     @Html.DisplayFor(modelItem => item.Publica)
                 </td>
                 <td>
-                    @total
+                    @Html.DisplayFor(modelItem => item.PELICULAS.Count)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos) @*CAMBIAR A 'Propietario'*@
