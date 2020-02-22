@@ -11,20 +11,36 @@ using Microsoft.AspNet.Identity;
 
 namespace Astrofilm.Controllers
 {
+    [Authorize(Roles = "Administrador,Usuario")]
     public class RESERVAsController : Controller
     {
         private AstrofilmEntities db = new AstrofilmEntities();
 
         // GET: RESERVAs
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var rESERVA = db.RESERVA.Include(r => r.FUNCIONES).Include(r => r.USUARIOS);
-            return View(rESERVA.ToList());
+            var rUsers = db.USUARIOS.Include(r => r.RESERVA);
+
+            if (User.IsInRole("Usuario"))
+            {
+                var emailUsuario = User.Identity.GetUserName();
+                ViewBag.emailUser = emailUsuario;
+                var userLog = rUsers.Where(r => r.Email == emailUsuario);
+                ViewBag.IDUsersFK = db.USUARIOS.Where(u => u.Email == emailUsuario);
+                //rESERVA.Where(r => r.IDUserFK);
+                return View(rESERVA.ToList());
+            }
+            else
+            {
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos");
+                return View(rESERVA.ToList());
+            }
         }
 
         // GET: RESERVAs/Details/5
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -83,7 +99,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Edit/5
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -119,7 +135,7 @@ namespace Astrofilm.Controllers
         }
 
         // GET: RESERVAs/Delete/5
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

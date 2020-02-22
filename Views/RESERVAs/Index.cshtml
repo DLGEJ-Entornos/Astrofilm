@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    //var idUsers = ViewBag.IDUsersFK;
 }
 
 <h2>Reservas</h2>
@@ -24,34 +25,78 @@
             @Html.DisplayNameFor(model => model.FUNCIONES.IDFuncion)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.USUARIOS.Nombre)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.USUARIOS.Apellidos)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FecReserva)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumButaca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrecioNeto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FUNCIONES.IDFuncion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IDReserva }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.IDReserva }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.IDReserva })
-        </td>
-    </tr>
-}
+    @if (User.IsInRole("Administrador"))
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FecReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumButaca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioNeto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FUNCIONES.IDFuncion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USUARIOS.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IDReserva }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IDReserva }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IDReserva })
+                </td>
+            </tr>
+        }
 
+    }
+    else /*Usuario*/
+    {
+
+        var mailUser = ViewBag.emailUser;
+        foreach (var item in Model.Where(a => a.USUARIOS.Email == mailUser))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FecReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumButaca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioNeto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FUNCIONES.IDFuncion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USUARIOS.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IDReserva }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IDReserva }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IDReserva })
+                </td>
+            </tr>
+        }
+
+    }
 </table>
