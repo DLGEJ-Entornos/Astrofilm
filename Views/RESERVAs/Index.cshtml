@@ -22,7 +22,8 @@
             @Html.DisplayNameFor(model => model.PrecioNeto)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FUNCIONES.IDFuncion)
+            @*@Html.DisplayNameFor(model => model.FUNCIONES.IDFuncion)*@
+            Función
         </th>
         <th>
             @Html.DisplayNameFor(model => model.USUARIOS.Nombre)
@@ -48,7 +49,8 @@
                     @Html.DisplayFor(modelItem => item.PrecioNeto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FUNCIONES.IDFuncion)
+                    @item.FUNCIONES.PELICULAS.Titulo
+                    @*@Html.DisplayFor(modelItem => item.FUNCIONES.IDFuncion)*@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.USUARIOS.Nombre)
@@ -81,7 +83,8 @@
                     @Html.DisplayFor(modelItem => item.PrecioNeto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FUNCIONES.IDFuncion)
+                    @*@Html.DisplayFor(modelItem => item.FUNCIONES.IDFuncion)*@
+                    @item.FUNCIONES.PELICULAS.Titulo
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.USUARIOS.Nombre)

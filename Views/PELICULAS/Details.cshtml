@@ -8,7 +8,7 @@
 
 <h2>Detalles</h2>
 
-<div>
+<div style="height:45em;">
     <main class="w-50 float-left d-inline-block">
         <h4>PELICULAS</h4>
         <hr />
@@ -47,6 +47,27 @@
             <h3>Sinopsis</h3>
             <p>Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, </p>
 
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              Críticas 
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="criticasContainer" class="card-body">
+                            @foreach (var critica in Model.CRITICAS.Where(c => c.IDPeliFK == Model.IDPelicula))
+                            {
+                                @critica.Texto <b> - @critica.USUARIOS.Nombre</b> <br /> <br />
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
             @*<dt>
                     @Html.DisplayNameFor(model => model.Imagen)
                 </dt>
@@ -56,14 +77,35 @@
                     <img src="~/Content/Images/Peliculas/@Html.DisplayFor(item => item.Imagen)" style="width:600px"/>
                 </dd>*@
         </dl>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.IDPelicula }) |
+        @Html.ActionLink("Volver al Inicio", "Index")
+    </p>
     </main>
     <aside class="float-right">
         @*<h2>@Html.DisplayFor(model => model.Imagen)</h2>*@
         <img src="~/Content/Images/Peliculas/@Html.DisplayFor(item => item.Imagen)" style="width:400px;" />
     </aside>
 </div>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.IDPelicula }) |
-    @Html.ActionLink("Volver al Inicio", "Index")
-</p>
+@*<br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />*@

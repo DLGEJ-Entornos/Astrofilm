@@ -38,7 +38,7 @@
         @if (User.IsInRole("Administrador"))
         {
             <div class="form-group">
-                @Html.LabelFor(model => model.IDUserFK, "IDUserFK", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.IDUserFK, "Usuario", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("IDUserFK", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.IDUserFK, "", new { @class = "text-danger" })
@@ -48,7 +48,7 @@
         else
         {
             <div class="form-group">
-                @Html.LabelFor(model => model.IDUserFK, "IDUserFK", htmlAttributes: new { @class = "control-label col-md-2 d-none" })
+                @Html.LabelFor(model => model.IDUserFK, "Usuario", htmlAttributes: new { @class = "control-label col-md-2 d-none" })
                 <div class="col-md-10">
                     @Html.DropDownList("IDUserFK", null, htmlAttributes: new { @class = "form-control d-none" })
                     @Html.ValidationMessageFor(model => model.IDUserFK, "", new { @class = "text-danger" })
@@ -57,7 +57,7 @@
         }
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IDFuncionFK, "IDFuncionFK", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IDFuncionFK, "Función", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IDFuncionFK", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IDFuncionFK, "", new { @class = "text-danger" })
