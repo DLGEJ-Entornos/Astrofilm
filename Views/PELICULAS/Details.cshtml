@@ -45,8 +45,10 @@
                 @Html.DisplayFor(model => model.PuntMedia)
             </dd>
             <h3>Sinopsis</h3>
-            <p>Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, Lorem ipsum asdfas, </p>
-
+            @if (Model.IDPelicula == 30)
+            {
+                <p>En Ciudad de México, un fatal accidente automovilístico afecta trágicamente a tres personas. Octavio, un adolescente, decide escaparse con Susana, la esposa de su hermano; el Cofí, su perro, se convierte en el instrumento para conseguir el dinero necesario para la fuga. Al mismo tiempo, Daniel, un hombre maduro deja a su esposa y a sus hijos para irse a vivir con Valeria, una hermosa modelo. El mismo día en que celebran su nueva vida, el destino hace que Valeria sea víctima de un trágico accidente.</p>
+            }
             <div id="accordion">
                 <div class="card">
                     <div class="card-header" id="headingOne">

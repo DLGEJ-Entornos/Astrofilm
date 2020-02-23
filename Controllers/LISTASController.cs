@@ -25,9 +25,15 @@ namespace Astrofilm.Controllers
             {
                 var emailUsuario = User.Identity.GetUserName();
                 ViewBag.emailUser = emailUsuario;
+                return View(lISTAS.ToList());
+            }
+            else
+            {
+                ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName");
+                return View(lISTAS.ToList());
             }
 
-            return View(lISTAS.ToList());
+
         }
 
         // GET: LISTAS/Details/5
