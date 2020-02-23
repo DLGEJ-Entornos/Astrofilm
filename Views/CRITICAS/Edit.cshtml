@@ -28,9 +28,9 @@
         @if (User.IsInRole("Administrador"))
         {
             <div class="form-group">
-                @Html.LabelFor(model => model.IDUserFK, "Usuario", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.IDUserFK, "Usuario", htmlAttributes: new { @class = "control-label col-md-2 d-none" })
                 <div class="col-md-10">
-                    @Html.DropDownList("IDUserFK", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("IDUserFK", null, htmlAttributes: new { @class = "form-control d-none" })
                     @Html.ValidationMessageFor(model => model.IDUserFK, "", new { @class = "text-danger" })
                 </div>
             </div>

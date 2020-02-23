@@ -33,7 +33,7 @@ namespace Astrofilm.Controllers
             }
             else
             {
-                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos");
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName");
                 return View(rESERVA.ToList());
             }
         }
@@ -63,7 +63,7 @@ namespace Astrofilm.Controllers
             }
             else
             {
-                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos");
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName");
             }
             ViewBag.IDFuncionFK = new SelectList(db.FUNCIONES, "IDFuncion", "IDFuncion");
             return View();
@@ -91,7 +91,7 @@ namespace Astrofilm.Controllers
             }
 
             ViewBag.IDFuncionFK = new SelectList(db.FUNCIONES, "IDFuncion", "IDFuncion", rESERVA.IDFuncionFK);
-            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", rESERVA.IDUserFK);
+            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", rESERVA.IDUserFK);
             return View(rESERVA);
         }
 
@@ -115,7 +115,7 @@ namespace Astrofilm.Controllers
             }
             else
             {
-                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", rESERVA.IDUserFK);
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", rESERVA.IDUserFK);
             }
             ViewBag.IDFuncionFK = new SelectList(db.FUNCIONES, "IDFuncion", "IDFuncion", rESERVA.IDFuncionFK);
             return View(rESERVA);
@@ -136,7 +136,7 @@ namespace Astrofilm.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IDFuncionFK = new SelectList(db.FUNCIONES, "IDFuncion", "IDFuncion", rESERVA.IDFuncionFK);
-            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", rESERVA.IDUserFK);
+            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", rESERVA.IDUserFK);
             return View(rESERVA);
         }
 

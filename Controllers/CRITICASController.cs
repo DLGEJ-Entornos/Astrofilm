@@ -46,8 +46,16 @@ namespace Astrofilm.Controllers
         // GET: CRITICAS/Create
         public ActionResult Create()
         {
+            if (User.IsInRole("Usuario"))
+            {
+                var emailUsuario = User.Identity.GetUserName();
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS.Where(u => u.Email == emailUsuario), "IdUsuario", "Nombre");
+            }
+            else
+            {
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName");
+            }
             ViewBag.IDPeliFK = new SelectList(db.PELICULAS, "IDPelicula", "Titulo");
-            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos");
             return View();
         }
 
@@ -66,7 +74,7 @@ namespace Astrofilm.Controllers
             }
 
             ViewBag.IDPeliFK = new SelectList(db.PELICULAS, "IDPelicula", "Titulo", cRITICAS.IDPeliFK);
-            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", cRITICAS.IDUserFK);
+            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", cRITICAS.IDUserFK);
             return View(cRITICAS);
         }
 
@@ -82,8 +90,18 @@ namespace Astrofilm.Controllers
             {
                 return HttpNotFound();
             }
+
+            
+            if (User.IsInRole("Usuario"))
+            {
+                var emailUsuario = User.Identity.GetUserName();
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS.Where(u => u.Email == emailUsuario), "IDUsuario", "Nombre",cRITICAS.IDUserFK);
+            }
+            else
+            {
+                ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", cRITICAS.IDUserFK);
+            }
             ViewBag.IDPeliFK = new SelectList(db.PELICULAS, "IDPelicula", "Titulo", cRITICAS.IDPeliFK);
-            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", cRITICAS.IDUserFK);
             return View(cRITICAS);
         }
 
@@ -101,7 +119,7 @@ namespace Astrofilm.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IDPeliFK = new SelectList(db.PELICULAS, "IDPelicula", "Titulo", cRITICAS.IDPeliFK);
-            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", cRITICAS.IDUserFK);
+            ViewBag.IDUserFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", cRITICAS.IDUserFK);
             return View(cRITICAS);
         }
 

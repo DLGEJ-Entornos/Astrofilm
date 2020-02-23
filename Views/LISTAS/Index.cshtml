@@ -46,7 +46,7 @@
                     @Html.DisplayFor(modelItem => item.PELICULAS.Count)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.USUARIOS.Apellidos) @*CAMBIAR A 'Propietario'*@
+                    @Html.DisplayFor(modelItem => item.USUARIOS.FullName) @*CAMBIAR A 'Propietario'*@
                 </td>
                 <td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.IDLista }) |

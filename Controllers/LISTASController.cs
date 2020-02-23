@@ -26,6 +26,7 @@ namespace Astrofilm.Controllers
                 var emailUsuario = User.Identity.GetUserName();
                 ViewBag.emailUser = emailUsuario;
             }
+
             return View(lISTAS.ToList());
         }
 
@@ -47,8 +48,16 @@ namespace Astrofilm.Controllers
         // GET: LISTAS/Create
         public ActionResult Create()
         {
+            if (User.IsInRole("Usuario"))
+            {
+                var emailUsuario = User.Identity.GetUserName();
+                ViewBag.PropietarioFK = new SelectList(db.USUARIOS.Where(u => u.Email == emailUsuario), "IdUsuario", "Nombre");
+            }
+            else
+            {
+                ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName");
+            }
             ViewBag.IDLista = new SelectList(db.COLABORADORES_LISTAS, "IDListaFK", "IDListaFK");
-            ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName");
             return View();
         }
 
@@ -83,6 +92,18 @@ namespace Astrofilm.Controllers
             {
                 return HttpNotFound();
             }
+
+
+            if (User.IsInRole("Usuario"))
+            {
+                var emailUsuario = User.Identity.GetUserName();
+                ViewBag.PropietarioFK = new SelectList(db.USUARIOS.Where(u => u.Email == emailUsuario), "IdUsuario", "Nombre",lISTAS.PropietarioFK);
+            }
+            else
+            {
+                ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", lISTAS.PropietarioFK);
+            }
+
             ViewBag.IDLista = new SelectList(db.COLABORADORES_LISTAS, "IDListaFK", "IDListaFK", lISTAS.IDLista);
             ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", lISTAS.PropietarioFK);
             ViewBag.PelisTitulo = new MultiSelectList(db.PELICULAS, "IDPelicula", "Titulo", lISTAS.PELICULAS);

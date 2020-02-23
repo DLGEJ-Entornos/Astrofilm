@@ -1,17 +1,46 @@
+## CREDENCIALES: ##
+
+### ADMINISTRADORES
+
+admin@empresa.com
+admin123
+
+pepe@gmail.com
+pepe123
+
+### USUARIO
+
+ana@ana.com
+ana123
+
+----------------------------------------
+
 ## TODO
-* Cambiar nombres/ocultar titulos y contenido tablas 
 * Ajusta css layout y archivos acabado PRO. 
-~~~~~~* Hacer usuarios ADmin reales, enviar a bd ROles
-* Reservas ID Funcion tiene que mostrar PELICULA vinculada a func
 * Solucion para sinopsis
 * Añadir peliculas a listas propias y Full Control desde admin
-~~~~~~* Crear critica desde details pelicula
 
---------------
+###BUGS CRASHES:
+TIPO FALLOS:
+	a:UNIQUE - Ya hay un Propietario del elemento.
+	b:FK.
+
+                  C: Create E: Edit
+Según ROLES:
+ADMIN | USUARIO |
+=================
+      |         | C  RESERVAS
+      |         | E
+
+  Xa  |   Xa    | C  LISTAS
+  Xa  |   Xb    | E
+
+      |         | C  CRITICAS
+      |   Xb    | E
 
 
-## CREDENCIALES:
-admin@empresa.com admin123
-pepe@gmail.com pepe123
+###Postergado:
+* Hacer usuarios ADmin reales, enviar a bd ROles
+* Crear critica desde details pelicula
 
-//Usuario: ana@ana.com ana123
+
