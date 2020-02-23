@@ -85,6 +85,8 @@ namespace Astrofilm.Controllers
             }
             ViewBag.IDLista = new SelectList(db.COLABORADORES_LISTAS, "IDListaFK", "IDListaFK", lISTAS.IDLista);
             ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", lISTAS.PropietarioFK);
+            ViewBag.PelisTitulo = new MultiSelectList(db.PELICULAS, "Titulo", "TitUlo", lISTAS.PELICULAS);
+            //new MultiSelectList(db.PELICULAS, "Titulo", "TitUlo", lISTAS.PELICULAS),
             return View(lISTAS);
         }
 

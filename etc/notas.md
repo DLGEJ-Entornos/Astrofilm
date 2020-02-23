@@ -5,7 +5,7 @@
 * Reservas ID Funcion tiene que mostrar PELICULA vinculada a func
 * Solucion para sinopsis
 * Añadir peliculas a listas propias y Full Control desde admin
-* Crear critica desde details pelicula
+~~~~~~* Crear critica desde details pelicula
 
 --------------
 
