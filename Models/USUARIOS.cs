@@ -25,6 +25,13 @@ namespace Astrofilm.Models
             this.USUARIOS_AMIGOS1 = new HashSet<USUARIOS_AMIGOS>();
         }
     
+        public string FullName
+        {
+            get
+            {
+                return this.Nombre + " " + this.Apellidos;
+            }
+        }
         [Display(Name = "ID")]
         public int IDUsuario { get; set; }
         public string Apellidos { get; set; }

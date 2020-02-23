@@ -48,7 +48,7 @@ namespace Astrofilm.Controllers
         public ActionResult Create()
         {
             ViewBag.IDLista = new SelectList(db.COLABORADORES_LISTAS, "IDListaFK", "IDListaFK");
-            ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos");
+            ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace Astrofilm.Controllers
             }
 
             ViewBag.IDLista = new SelectList(db.COLABORADORES_LISTAS, "IDListaFK", "IDListaFK", lISTAS.IDLista);
-            ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", lISTAS.PropietarioFK);
+            ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", lISTAS.PropietarioFK);
             return View(lISTAS);
         }
 
@@ -84,8 +84,8 @@ namespace Astrofilm.Controllers
                 return HttpNotFound();
             }
             ViewBag.IDLista = new SelectList(db.COLABORADORES_LISTAS, "IDListaFK", "IDListaFK", lISTAS.IDLista);
-            ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", lISTAS.PropietarioFK);
-            ViewBag.PelisTitulo = new MultiSelectList(db.PELICULAS, "Titulo", "TitUlo", lISTAS.PELICULAS);
+            ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", lISTAS.PropietarioFK);
+            ViewBag.PelisTitulo = new MultiSelectList(db.PELICULAS, "IDPelicula", "Titulo", lISTAS.PELICULAS);
             //new MultiSelectList(db.PELICULAS, "Titulo", "TitUlo", lISTAS.PELICULAS),
             return View(lISTAS);
         }
@@ -97,6 +97,7 @@ namespace Astrofilm.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IDLista,Titulo,Publica,NElementos,PropietarioFK")] LISTAS lISTAS)
         {
+            var peliculas = HttpContext.Request.Form["PelisTitulo"];
             if (ModelState.IsValid)
             {
                 db.Entry(lISTAS).State = EntityState.Modified;
@@ -104,7 +105,7 @@ namespace Astrofilm.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IDLista = new SelectList(db.COLABORADORES_LISTAS, "IDListaFK", "IDListaFK", lISTAS.IDLista);
-            ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "Apellidos", lISTAS.PropietarioFK);
+            ViewBag.PropietarioFK = new SelectList(db.USUARIOS, "IDUsuario", "FullName", lISTAS.PropietarioFK);
             return View(lISTAS);
         }
 
