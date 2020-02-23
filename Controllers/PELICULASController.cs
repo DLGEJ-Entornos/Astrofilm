@@ -53,6 +53,19 @@ namespace Astrofilm.Controllers
             {
                 return HttpNotFound();
             }
+
+            CRITICAS criticaNew = new CRITICAS();
+            var idUser = User.Identity.Name;
+            foreach (var item in db.USUARIOS)
+            {
+                if (item.Email == idUser)
+                {
+                    ViewBag.IDUser = item.IDUsuario;
+                }
+            }
+            ViewBag.criticaObj = criticaNew;
+            //criticaNew.IDPeliFK;
+            //criticaNew.IDUserFK;
             return View(pELICULAS);
         }
 

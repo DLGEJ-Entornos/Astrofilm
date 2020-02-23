@@ -8,7 +8,7 @@
 
 <h2>Detalles</h2>
 
-<div style="height:45em;">
+<div style="height:50em;">
     <main class="w-50 float-left d-inline-block">
         <h4>PELICULAS</h4>
         <hr />
@@ -52,7 +52,7 @@
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              Críticas 
+                                Críticas
                             </button>
                         </h5>
                     </div>
@@ -63,6 +63,26 @@
                             {
                                 @critica.Texto <b> - @critica.USUARIOS.Nombre</b> <br /> <br />
 
+                            }
+                            @if (User.IsInRole("Administrador") || User.IsInRole("Usuario"))
+                            {
+                                <i class="fas fa-plus-circle fa-lg" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="color:dodgerblue;"></i>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        @*{
+                                            var criticaNew = ViewBag.criticaObj;
+                                            string txt = "test";
+                                            @*@Model.IDPelicula;*@
+                                            //var mailUser = @User.Identity.Name;
+
+                                            criticaNew.Texto = txt;
+                                            criticaNew.IDUserFK = ViewBag.IDUser;
+                                            criticaNew.IDPeliFK = Model.IDPelicula;
+                                            //necesito : idCritica, texto, idUserfk, idPeliFk
+                                            Model.CRITICAS.Add(criticaNew);
+                                        }
+                                    </div>
+                                </div>
                             }
                         </div>
                     </div>
@@ -77,10 +97,10 @@
                     <img src="~/Content/Images/Peliculas/@Html.DisplayFor(item => item.Imagen)" style="width:600px"/>
                 </dd>*@
         </dl>
-    <p>
-        @Html.ActionLink("Editar", "Edit", new { id = Model.IDPelicula }) |
-        @Html.ActionLink("Volver al Inicio", "Index")
-    </p>
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.IDPelicula }) |
+            @Html.ActionLink("Volver al Inicio", "Index")
+        </p>
     </main>
     <aside class="float-right">
         @*<h2>@Html.DisplayFor(model => model.Imagen)</h2>*@
@@ -109,3 +129,8 @@
     <br />
     <br />
     <br />*@
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/333dc4d096.js" crossorigin="anonymous"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+}
